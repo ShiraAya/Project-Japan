@@ -16,6 +16,15 @@
 - **Project:** Project Japan
 - **Development Status:** Active
 
+## Companion Project: Project Japan Map
+
+For an in-game full map, minimap, geography HUD and waypoint system designed specifically for this world, see **[Project Japan Map](https://github.com/ShiraAya/Map-for-Project-Japan)**.
+
+Project Japan Map reads terrain and hydrology information from the loaded Project Japan runtime, allowing its map and HUD to stay synchronized with the current Project Japan world.
+
+- **Project Japan** provides the terrain, geography and hydrology.
+- **Project Japan Map** provides the map, minimap, geography HUD and waypoint interface.
+
 ## About Project Japan
 
 Project Japan aims to recreate the geography of Japan inside Minecraft while keeping the world practical for normal gameplay, exploration, transportation, and large-scale city building.
