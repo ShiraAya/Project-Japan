@@ -1,0 +1,1009 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+}
+
+group = mod_group_id
+version = mod_version
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+// Keep generated W05 identifiers and Japanese source text portable on Windows hosts whose
+// default javac charset is GBK. All project Java sources are UTF-8.
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'info'
+            mods { "${mod_id}" { source sourceSets.main } }
+        }
+        client {}
+        server { args '--nogui' }
+        data {
+            workingDirectory project.file('run-data')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        }
+    }
+}
+
+sourceSets {
+    main.resources { srcDir 'src/generated/resources' }
+    validation {
+        java.srcDir 'src/validation/java'
+        compileClasspath += main.output + main.compileClasspath
+        runtimeClasspath += output + compileClasspath + main.runtimeClasspath
+    }
+}
+
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    def props = [minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+                 forge_version: forge_version, forge_version_range: forge_version_range,
+                 loader_version_range: loader_version_range, mod_id: mod_id, mod_name: mod_name,
+                 mod_license: mod_license, mod_version: mod_version, mod_authors: mod_authors,
+                 mod_description: mod_description]
+    inputs.properties props
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) { expand props + [project: project] }
+}
+
+tasks.named('jar', Jar).configure {
+    from('ATTRIBUTION.md') {
+        into 'META-INF'
+        rename { 'PROJECTJAPAN-ATTRIBUTION.md' }
+    }
+    from('THIRD_PARTY_LICENSES') {
+        into 'META-INF/THIRD_PARTY_LICENSES'
+    }
+    manifest {
+        attributes([
+            'Specification-Title': mod_id,
+            'Specification-Vendor': mod_authors,
+            'Specification-Version': '1',
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.jar.archiveVersion,
+            'Implementation-Vendor': mod_authors
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.register('validateCore', JavaExec) {
+    group = 'verification'
+    description = 'Runs deterministic Project Japan terrain-only regression checks.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJCoreValidation'
+    maxHeapSize = '2G'
+}
+
+tasks.register('benchmarkChunkFill', JavaExec) {
+    group = 'verification'
+    description = 'Benchmarks Project Japan final terrain + surface painting at six landmarks.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJChunkFillBenchmark'
+    maxHeapSize = '3G'
+}
+
+tasks.register('validateChunkFill', JavaExec) {
+    group = 'verification'
+    description = 'Verifies landmark chunk blocks, heightmaps and section counters.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJChunkFillBenchmark'
+    args '--validate'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditTerrainRealism', JavaExec) {
+    group = 'verification'
+    description = 'Validates PJ physical scale, buildable city plains and regional surfaces.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJTerrainRealismAudit'
+    maxHeapSize = '2G'
+}
+
+tasks.register('auditHydrology', JavaExec) {
+    group = 'verification'
+    description = 'Validates Project Japan high-resolution river/lake hydraulics and geometry.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJHydrologyAudit'
+    maxHeapSize = '3G'
+}
+
+def coveragePython = System.getenv('PYTHON') ?: (System.getProperty('os.name')
+        .toLowerCase(Locale.ROOT).contains('windows') ? 'python' : 'python3')
+
+tasks.register('auditHydrologyCoverage', Exec) {
+    group = 'verification'
+    description = 'Verifies MLIT W05/W09 coverage catalogs and the frozen authored override layer.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/hydrology_pipeline.py', 'verify',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditLakeCoverage', Exec) {
+    group = 'verification'
+    description = 'RFIX-03 verifies the 190-candidate / 172-active retained-lake freeze and deterministic W09 derivative.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_retention_pipeline.py', 'verify',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditLakeGeometry', JavaExec) {
+    group = 'verification'
+    description = 'RFIX-03 validates 205 active runtime waterbodies while preserving the 223-member candidate pool.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeGeometryAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditRetainedLakeVerticalAlignment', JavaExec) {
+    group = 'verification'
+    description = 'Validates retained inland W09 lake surfaces against PJ regional elevation transforms and basin terrain.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJRetainedLakeVerticalAlignmentAudit'
+    maxHeapSize = '3G'
+}
+
+
+// LR-01..LR-04: nationwide lake baseline + reusable refinement core + polygon rasterization.
+tasks.register('buildLakeRefinementAudit', Exec) {
+    group = 'verification'
+    description = 'LR-01..03 regenerates the 205-lake geometry baseline and five-lake refinement canary reports.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_refinement_pipeline.py', 'build',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditLakeRefinementCore', Exec) {
+    group = 'verification'
+    description = 'LR-01..03 verifies baseline priorities and adaptive simplify/smooth/densify canaries without bulk geometry refresh.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_refinement_pipeline.py', 'verify',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditLakeShorelineRasterization', JavaExec) {
+    group = 'verification'
+    description = 'LR-04 validates block-centre + edge-coverage polygon ownership for 172 retained lakes and W09 Hibara.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeShorelineRasterizationAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('freezeLr01Lr04') {
+    group = 'verification'
+    description = 'LR-01..04 gate: baseline audit, reusable refinement canaries, active-set/geometry regression and improved rasterization.'
+    dependsOn tasks.named('auditLakeRefinementCore'), tasks.named('auditLakeShorelineRasterization'),
+            tasks.named('auditLakeCoverage'), tasks.named('auditLakeActiveSet'),
+            tasks.named('auditLakeGeometry'), tasks.named('auditUnexpectedLakeOverlap')
+}
+
+// LR-05..LR-10: regional application of the retained-lake refinement core.
+tasks.register('buildRegionalLakeRefinement', Exec) {
+    group = 'verification'
+    description = 'LR-05..10 regenerates all 172 active retained-lake refined geometry batches and reports.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_refinement_pipeline.py', 'build-regional',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditRegionalLakeRefinementData', Exec) {
+    group = 'verification'
+    description = 'LR-05..10 verifies six deterministic regional reports and the 172-lake refined geometry resource.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_refinement_pipeline.py', 'verify-regional',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditRegionalLakeRefinementRuntime', JavaExec) {
+    group = 'verification'
+    description = 'LR-05..10 validates refined runtime vertex envelope, representative ownership and shoreline sample budget.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeRegionalRefinementAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('freezeLr05Lr10') {
+    group = 'verification'
+    description = 'LR-05..10 gate: all 172 active retained lake geometries refreshed; topology/retention stay frozen.'
+    dependsOn tasks.named('auditLakeRefinementCore'), tasks.named('auditRegionalLakeRefinementData'),
+            tasks.named('auditRegionalLakeRefinementRuntime'),
+            tasks.named('auditLakeCoverage'), tasks.named('auditLakeActiveSet'),
+            tasks.named('auditLakeGeometry'), tasks.named('auditRetainedLakeVerticalAlignment'),
+            tasks.named('auditUnexpectedLakeOverlap'),
+            tasks.named('auditLakeShorelineRasterization'), tasks.named('auditLakeGraphCoverage'),
+            tasks.named('auditHydrologyRetention')
+}
+
+// LR-11..LR-12: refresh the 33 authored shorelines, then audit gate displacement only.
+tasks.register('buildAuthoredLakeRefinement', Exec) {
+    group = 'verification'
+    description = 'LR-11/LR-12 regenerates refined authored-lake geometry and shoreline/gate preservation evidence.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_authored_refresh_pipeline.py', 'build',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditAuthoredLakeRefinementData', Exec) {
+    group = 'verification'
+    description = 'LR-11/LR-12 verifies the 33 authored refined polygons and the nationwide gate-preservation report.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_authored_refresh_pipeline.py', 'verify',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditAuthoredLakeRefinementRuntime', JavaExec) {
+    group = 'verification'
+    description = 'LR-11 proves authored IDs/water Y stay frozen while all 33 runtime shorelines use refined geometry.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeAuthoredRefreshAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditLakeGatePreservation') {
+    group = 'verification'
+    description = 'LR-12 audits post-refinement gate displacement; final physical contact is intentionally deferred to CF.'
+    dependsOn tasks.named('auditAuthoredLakeRefinementData')
+}
+
+tasks.register('auditLakeShorelineQuality', Exec) {
+    group = 'verification'
+    description = 'LR-FINAL verifies all 205 active shorelines: critical features, self-intersection, long segments and overlap.'
+    dependsOn tasks.named('auditAuthoredLakeRefinementData')
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_lr_final_audit.py', 'verify',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditLakeBankConflicts', JavaExec) {
+    group = 'verification'
+    description = 'LR-FINAL validates active-lake bank influence after refined shoreline geometry and reviewed exceptions.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeBankConflictAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('freezeLr11Lr12') {
+    group = 'verification'
+    description = 'LR-11/LR-12 gate: 33 authored shoreline refresh plus gate-preservation audit without connector rebuild.'
+    dependsOn tasks.named('auditAuthoredLakeRefinementData'),
+            tasks.named('auditAuthoredLakeRefinementRuntime'), tasks.named('auditLakeGatePreservation'),
+            tasks.named('auditLakeCoverage'), tasks.named('auditLakeActiveSet'),
+            tasks.named('auditLakeGeometry'), tasks.named('auditUnexpectedLakeOverlap'),
+            tasks.named('auditLakeShorelineRasterization')
+}
+
+tasks.register('freezeLrFinal') {
+    group = 'verification'
+    description = 'LR-FINAL lake geometry freeze before any authored-river reconciliation begins.'
+    dependsOn tasks.named('freezeLr11Lr12'), tasks.named('auditLakeCoverage'),
+            tasks.named('auditLakeGeometry'), tasks.named('auditUnexpectedLakeOverlap'),
+            tasks.named('auditLakeBankConflicts'), tasks.named('auditLakeGateWidths'),
+            tasks.named('benchmarkChunkFill'), tasks.named('auditLakeShorelineQuality')
+}
+
+// G-01..G-FINAL: deterministic LakeGraph / mandatory-connector gates.
+tasks.register('auditLakeGraphCoverage', Exec) {
+    group = 'verification'
+    description = 'Verifies the deterministic RFIX-03 205-node LakeGraph and rebased CONNECTOR_ONLY derivative.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/lake_graph_pipeline.py', 'verify',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditLakeTopology', JavaExec) {
+    group = 'verification'
+    description = 'G-FINAL validates LakeGraph nodes/edges, authored aliases and coastal-channel classification.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeTopologyAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditRiverLakeConnections', JavaExec) {
+    group = 'verification'
+    description = 'G-FINAL validates existing and CONNECTOR_ONLY lake-river hydraulic gates.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJRiverLakeConnectionAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditLakeGateWidths', JavaExec) {
+    group = 'verification'
+    description = 'G-FINAL proves CONNECTOR_ONLY widths stay minimal and outside the visible-river count.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeGateWidthAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditAuthoredConfluences', JavaExec) {
+    group = 'verification'
+    description = 'Verifies W05-anchored geometry for all authored terminalRiver links.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredConfluenceAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditAuthoredRiverTopology', JavaExec) {
+    group = 'verification'
+    description = 'Validates authored river graph semantics, water-mask overlaps, W05 route deviation and inland-ocean crossings.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredRiverTopologyAudit'
+    maxHeapSize = '3G'
+}
+
+// AR-01..AR-03: read-only authored geometry reconciliation preparation.
+tasks.register('auditAuthoredRiverAlignment', JavaExec) {
+    group = 'verification'
+    description = 'AR-01 audits all 115 authored RiverCourse routes against W05, final LR shoreline, valley and coast geometry.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredRiverAlignmentAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditAuthoredRiverLakeIntersections', JavaExec) {
+    group = 'verification'
+    description = 'AR-01 reports SOURCE/TERMINAL/DECLARED versus ILLEGAL active-lake intersections; AR-FINAL will enforce zero.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredRiverLakeIntersectionAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditAuthoredRiverClassification', JavaExec) {
+    group = 'verification'
+    description = 'AR-02 verifies the frozen 115-river execution policy; post-refresh live reclassification is allowed.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredRiverClassificationAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditAuthoredGeometryRefreshCore', JavaExec) {
+    group = 'verification'
+    description = 'AR-03 validates geometry-only previews against the frozen AR-02 modes without mutating runtime geometry.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredGeometryRefreshCoreAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('freezeAr01Ar03') {
+    group = 'verification'
+    description = 'Freezes AR-01 alignment baseline, AR-02 classification and AR-03 refresh core before regional route batches.'
+    dependsOn tasks.named('auditAuthoredRiverAlignment'), tasks.named('auditAuthoredRiverLakeIntersections'),
+            tasks.named('auditAuthoredRiverClassification'), tasks.named('auditAuthoredGeometryRefreshCore'),
+            tasks.named('auditAuthoredRiverTopology')
+}
+
+tasks.register('auditAuthoredRegionalRefresh', JavaExec) {
+    group = 'verification'
+    description = 'AR-04..09 verifies the six frozen regional runtime geometry batches and writes their final CSV reports.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredRegionalRefreshAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditAuthoredRiverLakeIntersectionsEnforced', JavaExec) {
+    group = 'verification'
+    description = 'AR-04..09 hard gate: every authored river/lake intersection must have a declared topology reason.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredRiverLakeIntersectionAudit'
+    systemProperty 'projectjapan.ar.enforceLakeIntersections', 'true'
+    maxHeapSize = '4G'
+}
+
+tasks.register('freezeAr04Ar09') {
+    group = 'verification'
+    description = 'Freezes AR-04..09 regional authored RiverCourse geometry before AR-10/11 contact reconciliation.'
+    dependsOn tasks.named('auditAuthoredRegionalRefresh'),
+            tasks.named('auditAuthoredRiverLakeIntersectionsEnforced'),
+            tasks.named('auditHydrology'), tasks.named('auditAuthoredConfluences'),
+            tasks.named('auditTerminalHydraulicApproach'), tasks.named('auditJunctionPlanform'),
+            tasks.named('auditAuthoredWidthHierarchy')
+}
+
+// AR-10..AR-11: recompute geometry/contact metadata after final regional authored routes.
+tasks.register('auditAuthoredConfluenceReconciliation', JavaExec) {
+    group = 'verification'
+    description = 'AR-10 recomputes first parent water-mask contact, junction station and available approach for all 15 terminalRiver links.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredConfluenceReconciliationAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditAuthoredRiverLakeContactReconciliation', JavaExec) {
+    group = 'verification'
+    description = 'AR-11 re-identifies source/terminal/declared river-lake physical contacts from LR-FINAL shoreline + AR runtime routes.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredRiverLakeContactReconciliationAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('freezeAr10Ar11') {
+    group = 'verification'
+    description = 'Freezes AR-10/11 contact metadata only; CF still owns final endpoint/hydraulic rebuild.'
+    dependsOn tasks.named('auditAuthoredConfluenceReconciliation'),
+            tasks.named('auditAuthoredRiverLakeContactReconciliation'),
+            tasks.named('auditAuthoredRiverLakeIntersectionsEnforced')
+}
+
+tasks.register('auditAuthoredRiverGeometryFreeze', JavaExec) {
+    group = 'verification'
+    description = 'AR-FINAL hard gate for 115 authored route identities, legal lake/coast geometry and recomputed connection metadata.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredRiverGeometryFreezeAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('freezeArFinal') {
+    group = 'verification'
+    description = 'AR-FINAL: freezes authored RiverCourse geometry before CF final physical-contact and hydraulic rebuild.'
+    dependsOn tasks.named('auditAuthoredRiverGeometryFreeze'),
+            tasks.named('auditAuthoredConfluenceReconciliation'),
+            tasks.named('auditAuthoredRiverLakeContactReconciliation'),
+            tasks.named('auditAuthoredRiverTopology'),
+            tasks.named('auditAuthoredRiverLakeIntersectionsEnforced'),
+            tasks.named('auditHydrologyCoverage'), tasks.named('auditAuthoredWidthHierarchy'),
+            tasks.named('auditHydrology'), tasks.named('auditAuthoredRegionalRefresh')
+}
+
+
+// CF-01..CF-FINAL: rebuild physical contacts only after LR-FINAL shoreline + AR-FINAL route freeze.
+tasks.register('auditFinalConnectionFreeze', JavaExec) {
+    group = 'verification'
+    description = 'CF-FINAL hard gate for final river/lake/river contacts, CF-only bridges, connector ownership and rendered hydraulic continuity.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJFinalConnectionFreezeAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditThirdPartyLakeCrossing', JavaExec) {
+    group = 'verification'
+    description = 'CF-FINAL checks authored, connector-metadata and CF-bridge routes for undeclared third-party lake crossings.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJThirdPartyLakeCrossingAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditRenderedLakeConnections', JavaExec) {
+    group = 'verification'
+    description = 'CF-FINAL checks final lake hydraulic reaches and CF bridges for exact gate Y, no rise and <=1-block drops.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJRenderedLakeConnectionsAudit'
+    maxHeapSize = '4G'
+}
+
+
+tasks.register('auditFinalLakeCrossSectionUnion', JavaExec) {
+    group = 'verification'
+    description = 'CF-LAKE-UNION checks lateral river/lake bed continuity beyond the river wet edge.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJFinalLakeCrossSectionUnionAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditFinalLakeShorelineAperture', JavaExec) {
+    group = 'verification'
+    description = 'CF-FINAL LakeUnion Fix3 verifies final river/lake shoreline gates contain no internal lake bank or dry barrier and remain <=1 block continuous.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJFinalLakeShorelineApertureAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditNearSourceLakeCollision', JavaExec) {
+    group = 'verification'
+    description = 'CF-FINAL LakeUnion Fix3 verifies a non-source-lake river cannot begin inside headwater shaping range of a declared channel unless a route-backed W05 upstream prefix resolves it.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJNearSourceLakeCollisionAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditSourceLakeOutletSuspension', JavaExec) {
+    group = 'verification'
+    description = 'CF-FINAL LakeUnion Fix3 verifies SOURCE_FROM_LAKE outlet profiles use local valley transition and do not create suspended-water runs.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJSourceLakeOutletSuspensionAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditSourceLakeTopology', JavaExec) {
+    group = 'verification'
+    description = 'AR-ENDPOINT-FIX verifies SOURCE_FROM_LAKE starts at the final outlet and never land->lake->land.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJSourceLakeTopologyAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditSourceLakeIntrusion', JavaExec) {
+    group = 'verification'
+    description = 'AR-ENDPOINT-FIX limits source-river centre-line overlap inside the source lake to <=32 blocks.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJSourceLakeIntrusionAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditAuthoredSourceRelocation', JavaExec) {
+    group = 'verification'
+    description = 'AR-ENDPOINT-FIX audits all 22 REBUILD source relocation decisions and raw pre-densification chords.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredSourceRelocationAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditAuthoredStraightRuns', JavaExec) {
+    group = 'verification'
+    description = 'AR-ENDPOINT-FIX rejects newly generated unsupported giant straight runs after densification.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredStraightRunAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('freezeCfFinal') {
+    group = 'verification'
+    description = 'CF-FINAL: freezes all current physical contacts and hydraulic gates without moving LR/AR geometry.'
+    dependsOn 'auditFinalConnectionFreeze', 'auditTerminalHydraulicApproach',
+            'auditJunctionPlanform', 'auditJunctionBathymetry', 'auditRiverLakeConnections',
+            'auditConnectorEndpointOwnership', 'auditThirdPartyLakeCrossing',
+            'auditRenderedLakeConnections', 'auditFinalLakeCrossSectionUnion',
+            'auditFinalLakeShorelineAperture', 'auditNearSourceLakeCollision',
+            'auditSourceLakeOutletSuspension', 'auditSourceLakeTopology', 'auditSourceLakeIntrusion',
+            'auditAuthoredSourceRelocation', 'auditAuthoredStraightRuns',
+            'auditDanglingRuntimeConnectors', 'auditRuntimeRiverConnections', 'auditLakeGateWidths'
+}
+
+tasks.register('auditRuntimeRiverConnections', JavaExec) {
+    group = 'verification'
+    description = 'Checks production-path confluence, bifurcation and river-lake connection surfaces for runtime +1 rises.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJRuntimeRiverConnectionAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditJunctionPlanform', JavaExec) {
+    group = 'verification'
+    description = 'Reports first-contact and child-only terminal planform metrics for authored confluences.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJJunctionPlanformAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditTerminalHydraulicApproach', JavaExec) {
+    group = 'verification'
+    description = 'Checks first real parent-water contact levels for all authored terminalRiver links.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJTerminalHydraulicApproachAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('reportJunctionLevelPolicy', JavaExec) {
+    group = 'verification'
+    description = 'J-05 diagnostic classification for all authored terminalRiver hydraulic approaches.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJJunctionLevelPolicyReport'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditJunctionBathymetry', JavaExec) {
+    group = 'verification'
+    description = 'Validates production-path 2-D river-river junction bed continuity and owner seams.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJJunctionBathymetryAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditAuthoredWidthHierarchy', JavaExec) {
+    group = 'verification'
+    description = 'Validates authored P0/P1/P2 widening metadata, counts and junction width hierarchy.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJAuthoredWidthHierarchyAudit'
+    maxHeapSize = '3G'
+}
+
+// J-12: the current 115 authored rivers are frozen only when this complete gate passes.
+tasks.register('freezeCurrent115Hydrology') {
+    group = 'verification'
+    description = 'Runs the J-12 final gate before nationwide lake/river expansion.'
+    dependsOn tasks.named('auditHydrology'), tasks.named('auditAuthoredConfluences'),
+            tasks.named('auditAuthoredRiverTopology'), tasks.named('auditRuntimeRiverConnections'),
+            tasks.named('auditTerminalHydraulicApproach'), tasks.named('auditJunctionPlanform'),
+            tasks.named('auditJunctionBathymetry'), tasks.named('auditAuthoredWidthHierarchy'),
+            tasks.named('benchmarkChunkFill')
+}
+
+
+// RFIX-01..RFIX-03: PJ-scale lake spatial viability / retention reconciliation / active-set freeze.
+tasks.register('auditLakeSpatialViability', JavaExec) {
+    group = 'verification'
+    description = 'RFIX-01 audits all 223 lake candidates for close shoreline/bank conflicts without changing runtime.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeSpatialViabilityAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditLakeActiveSet', JavaExec) {
+    group = 'verification'
+    description = 'RFIX-02/RFIX-03 validates planner-frozen 223 candidate / 205 active lake retention.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJLakeActiveSetAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditUnexpectedLakeOverlap', JavaExec) {
+    group = 'verification'
+    description = 'RFIX-03 verifies deferred W09 candidates cannot leak back into runtime water ownership.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJUnexpectedLakeOverlapAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('freezeRfixActiveLakes') {
+    group = 'verification'
+    description = 'RFIX-01..03 gate: spatial viability + active-set freeze + geometry/overlap + chunk-fill benchmark.'
+    dependsOn tasks.named('auditLakeCoverage'), tasks.named('auditLakeSpatialViability'),
+            tasks.named('auditLakeActiveSet'), tasks.named('auditLakeGeometry'),
+            tasks.named('auditUnexpectedLakeOverlap'), tasks.named('auditLakeGraphCoverage'),
+            tasks.named('auditLakeTopology'), tasks.named('benchmarkChunkFill')
+}
+
+// RFIX-04..RFIX-06: connector endpoint ownership / dangling runtime disable / state model.
+tasks.register('auditConnectorEndpointOwnership', JavaExec) {
+    group = 'verification'
+    description = 'RFIX-04 classifies connector endpoint owners, physical contacts and third-party lake crossings.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJConnectorEndpointOwnershipAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditDanglingRuntimeConnectors', JavaExec) {
+    group = 'verification'
+    description = 'RFIX-05 proves single-ended bare-land stubs retain metadata but generate zero runtime geometry.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJDanglingRuntimeConnectorAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditConnectorState', JavaExec) {
+    group = 'verification'
+    description = 'RFIX-06 validates PENDING_CONNECTOR / ACTIVE_CONNECTOR_ONLY / PROMOTED_VISIBLE decisions.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJConnectorStateAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('freezeRfixConnectors') {
+    group = 'verification'
+    description = 'RFIX-04..06 gate for physical endpoint ownership, dangling connector disable and runtime state separation.'
+    dependsOn tasks.named('auditConnectorEndpointOwnership'),
+            tasks.named('auditDanglingRuntimeConnectors'), tasks.named('auditConnectorState'),
+            tasks.named('auditLakeTopology'), tasks.named('auditRiverLakeConnections'),
+            tasks.named('auditLakeGateWidths'), tasks.named('auditHydrology')
+}
+
+// RFIX-07..RFIX-11 follow-up: keep Hibara footprint correction but remove all Urabandai runtime waterways.
+tasks.register('auditUrabandaiTopologyData', Exec) {
+    group = 'verification'
+    description = 'Verifies deterministic Hibara footprint and zero-owner Urabandai runtime-waterway resources.'
+    commandLine 'python', 'tools/hydrology/urabandai_rfix_pipeline.py', 'verify', '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditUrabandaiTopology', JavaExec) {
+    group = 'verification'
+    description = 'Validates that Hibara/Onogawa/Akimoto remain active lakes with no runtime connector or frozen Nagase owner.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJUrabandaiTopologyAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('freezeRfixUrabandai') {
+    group = 'verification'
+    description = 'Urabandai no-waterway gate: zero runtime waterways + corrected lake footprint + lake/hydrology regression.'
+    dependsOn tasks.named('auditUrabandaiTopologyData'), tasks.named('auditUrabandaiTopology'),
+            tasks.named('auditConnectorEndpointOwnership'), tasks.named('auditDanglingRuntimeConnectors'),
+            tasks.named('auditConnectorState'), tasks.named('auditLakeActiveSet'),
+            tasks.named('auditLakeGeometry'), tasks.named('auditUnexpectedLakeOverlap'),
+            tasks.named('auditLakeTopology'), tasks.named('auditRiverLakeConnections'),
+            tasks.named('auditLakeGateWidths'), tasks.named('auditHydrologyRetention'),
+            tasks.named('auditHydrology')
+}
+
+tasks.register('freezeUrabandaiNoWaterways') {
+    group = 'verification'
+    description = 'Alias gate for the user-requested removal of all runtime waterways attached to the Urabandai three lakes.'
+    dependsOn tasks.named('freezeRfixUrabandai')
+}
+
+// L-13: lake geometry freezes before LakeGraph / connector work begins.
+tasks.register('freezeRetainedLakes') {
+    group = 'verification'
+    description = 'Runs the L-13 33+190 retained-lake coverage, geometry and chunk-fill gate.'
+    dependsOn tasks.named('auditLakeCoverage'), tasks.named('auditLakeGeometry'),
+            tasks.named('auditRetainedLakeVerticalAlignment'),
+            tasks.named('auditHydrology'), tasks.named('benchmarkChunkFill')
+}
+
+// G-FINAL: LakeGraph + mandatory connector freeze before retention reconciliation / P0.
+tasks.register('freezeLakeGraph') {
+    group = 'verification'
+    description = 'Runs the G-FINAL LakeGraph, mandatory connector and frozen hydrology gate.'
+    dependsOn tasks.named('auditLakeGraphCoverage'), tasks.named('auditLakeTopology'),
+            tasks.named('auditRiverLakeConnections'), tasks.named('auditLakeGateWidths'),
+            tasks.named('auditRetainedLakeVerticalAlignment'), tasks.named('auditHydrology')
+}
+
+// Backward-compatible alias for workspaces/scripts created during earlier 0.6.x hydrology passes.
+tasks.register('auditHydraulicTerrain', JavaExec) {
+    group = 'verification'
+    description = 'Compatibility alias; runs the consolidated Project Japan hydrology audit.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJHydraulicTerrainAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.named('check').configure {
+    dependsOn tasks.named('validateCore'), tasks.named('validateChunkFill'),
+            tasks.named('auditTerrainRealism'), tasks.named('auditHydrology'),
+            tasks.named('auditHydrologyCoverage'), tasks.named('auditLakeCoverage'),
+            tasks.named('auditLakeSpatialViability'), tasks.named('auditLakeActiveSet'),
+            tasks.named('auditLakeGeometry'), tasks.named('auditRetainedLakeVerticalAlignment'),
+            tasks.named('auditUnexpectedLakeOverlap'),
+            tasks.named('auditLakeRefinementCore'), tasks.named('auditLakeShorelineRasterization'),
+            tasks.named('auditRegionalLakeRefinementData'), tasks.named('auditRegionalLakeRefinementRuntime'),
+            tasks.named('auditAuthoredLakeRefinementData'), tasks.named('auditAuthoredLakeRefinementRuntime'),
+            tasks.named('auditLakeGatePreservation'), tasks.named('auditLakeShorelineQuality'),
+            tasks.named('auditLakeBankConflicts'), tasks.named('auditLakeGraphCoverage'),
+            tasks.named('auditLakeTopology'), tasks.named('auditRiverLakeConnections'),
+            tasks.named('auditLakeGateWidths'), tasks.named('auditUrabandaiTopologyData'),
+            tasks.named('auditUrabandaiTopology'), tasks.named('auditConnectorEndpointOwnership'),
+            tasks.named('auditDanglingRuntimeConnectors'), tasks.named('auditConnectorState'),
+            tasks.named('auditAuthoredConfluences'),
+            tasks.named('auditAuthoredRiverTopology'), tasks.named('auditAuthoredRiverAlignment'),
+            tasks.named('auditAuthoredRiverLakeIntersections'), tasks.named('auditAuthoredRiverClassification'),
+            tasks.named('auditAuthoredGeometryRefreshCore'), tasks.named('auditAuthoredRegionalRefresh'),
+            tasks.named('auditAuthoredConfluenceReconciliation'), tasks.named('auditAuthoredRiverLakeContactReconciliation'),
+            tasks.named('auditAuthoredRiverGeometryFreeze'), tasks.named('auditRuntimeRiverConnections'),
+            tasks.named('auditTerminalHydraulicApproach'), tasks.named('auditJunctionPlanform'),
+            tasks.named('auditJunctionBathymetry'), tasks.named('auditAuthoredWidthHierarchy'),
+            tasks.named('auditFinalLakeCrossSectionUnion'), tasks.named('auditFinalLakeShorelineAperture'),
+            tasks.named('auditNearSourceLakeCollision'), tasks.named('auditSourceLakeOutletSuspension'),
+            tasks.named('auditSourceLakeTopology'), tasks.named('auditSourceLakeIntrusion'),
+            tasks.named('auditAuthoredSourceRelocation'), tasks.named('auditAuthoredStraightRuns')
+}
+
+// R1_R2_RETENTION_RECONCILIATION_TASKS
+// Candidate/report-only stage: does not import new RiverCourse instances.
+tasks.register('reconcileHydrologyRetention', Exec) {
+    group = 'verification'
+    description = 'R2 candidate baseline + RFIX-18R lake-aware review + frozen secondary P2 screen; no runtime import.'
+    commandLine coveragePython, 'tools/hydrology/retention_reconciliation.py', 'build', '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditHydrologyRetention', Exec) {
+    group = 'verification'
+    description = 'Verifies deterministic R2 baseline plus RFIX-18R secondary-screened FINAL retention outputs (32/118/302, visible 567).'
+    commandLine coveragePython, 'tools/hydrology/retention_reconciliation.py', 'verify', '--project-root', projectDir.absolutePath
+}
+
+
+// RFIX-17..RFIX-FINAL: final pre-P0 freeze / promotion review / handoff infrastructure.
+tasks.register('freezeRfix17JunctionContract') {
+    group = 'verification'
+    description = 'RFIX-17 freezes the existing 15 authored junction hydraulic/planform/bathymetry contract without geometry edits.'
+    dependsOn tasks.named('auditTerminalHydraulicApproach'), tasks.named('auditRuntimeRiverConnections'),
+            tasks.named('auditJunctionPlanform'), tasks.named('auditJunctionBathymetry'),
+            tasks.named('auditAuthoredConfluenceReconciliation'), tasks.named('auditAuthoredConfluences'),
+            tasks.named('auditHydrology')
+    doLast { println 'FINAL JUNCTION CONTRACT FROZEN' }
+}
+
+tasks.register('applyRfix18SecondaryScreen', Exec) {
+    group = 'verification'
+    description = 'Applies the frozen RFIX18R_SECONDARY_RIVER_SCREEN_v1 policy to retention only: 22 P2 DEFER, 20 P2 watchlist KEEP.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/retention_reconciliation.py', 'build',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditRfix18SecondaryScreenApply', Exec) {
+    group = 'verification'
+    description = 'Verifies the frozen RFIX-18 secondary screen and exact FINAL 32/118/302/567 retention result.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/retention_reconciliation.py', 'verify',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('auditRfix18FinalRiverRetention', Exec) {
+    group = 'verification'
+    description = 'RFIX-18R FINAL audits all 489 review rows, applies frozen 22-P2 DEFER + 20-P2 watchlist, and requires 32/118/302 + visible 567.'
+    workingDir projectDir
+    commandLine coveragePython, 'tools/hydrology/retention_reconciliation.py', 'verify',
+            '--project-root', projectDir.absolutePath
+}
+
+tasks.register('freezeRfix18FinalRiverRetention') {
+    group = 'verification'
+    description = 'RFIX-18R freezes secondary-screened FINAL retention: P0/P1/P2=32/118/302, visible=567, runtimeImported=false.'
+    dependsOn tasks.named('auditRfix18SecondaryScreenApply'), tasks.named('auditRfix18FinalRiverRetention')
+    doLast { println 'FINAL RIVER RETENTION SET FROZEN — P0/P1/P2 32/118/302 — VISIBLE 567' }
+}
+
+tasks.register('freezeRfix18Final') {
+    group = 'verification'
+    description = 'RFIX-18R-FINAL alias: freezes the secondary-screened final river retention set before P0.'
+    dependsOn tasks.named('freezeRfix18FinalRiverRetention'), tasks.named('auditHydrologyRetention'),
+            tasks.named('auditConnectorState'), tasks.named('auditConnectorEndpointOwnership'),
+            tasks.named('auditThirdPartyLakeCrossing')
+    doLast { println 'RFIX-18R-FINAL FROZEN — FINAL RIVER RETENTION SET 567' }
+}
+
+// Compatibility aliases for the superseded 53-row RFIX-18 promotion-only gate.
+tasks.register('auditRfix18PromotionReview') {
+    group = 'verification'
+    description = 'Deprecated alias -> auditRfix18FinalRiverRetention.'
+    dependsOn tasks.named('auditRfix18FinalRiverRetention')
+}
+
+tasks.register('freezeRfix18PromotionCandidates') {
+    group = 'verification'
+    description = 'Deprecated alias -> freezeRfix18FinalRiverRetention.'
+    dependsOn tasks.named('freezeRfix18FinalRiverRetention')
+}
+
+tasks.register('auditVisibleRiverHandoffInfrastructure', JavaExec) {
+    group = 'verification'
+    description = 'RFIX-19 validates the generic W05 visible-owner registry and synthetic connector handoff without mutating runtime state.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJVisibleRiverHandoffInfrastructureAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('freezeRfix19VisibleRiverHandoff') {
+    group = 'verification'
+    description = 'RFIX-19 freezes visible-river handoff infrastructure while preserving connector registry=13/pending=13/active=0/promoted=0.'
+    dependsOn tasks.named('auditVisibleRiverHandoffInfrastructure'), tasks.named('auditConnectorState'),
+            tasks.named('auditConnectorEndpointOwnership'), tasks.named('auditDanglingRuntimeConnectors'),
+            tasks.named('auditThirdPartyLakeCrossing'), tasks.named('auditLakeGateWidths')
+    doLast { println 'VISIBLE RIVER HANDOFF INFRASTRUCTURE FROZEN' }
+}
+
+tasks.register('freezeRfix20RetentionPolicy') {
+    group = 'verification'
+    description = 'RFIX-20 freezes RFIX-18R actual final retention counts/terminology; selected visible candidate is planning-only and runtime PROMOTED_VISIBLE remains zero.'
+    dependsOn tasks.named('auditHydrologyRetention'), tasks.named('auditConnectorState'),
+            tasks.named('auditVisibleRiverHandoffInfrastructure')
+    doLast { println 'R / RETENTION POLICY FROZEN' }
+}
+
+tasks.register('freezeRfixFinal') {
+    group = 'verification'
+    description = 'RFIX-FINAL full-system hard gate before P0 runtime import.'
+    dependsOn tasks.named('check'), tasks.named('freezeCfFinal'), tasks.named('freezeRfix17JunctionContract'),
+            tasks.named('freezeRfix18FinalRiverRetention'), tasks.named('freezeRfix19VisibleRiverHandoff'),
+            tasks.named('freezeRfix20RetentionPolicy'), tasks.named('auditHydrologyRetention'),
+            tasks.named('auditHydrologyCoverage'), tasks.named('benchmarkChunkFill')
+    doLast { println 'RFIX-FINAL FROZEN — P0 UNBLOCKED' }
+}
+
+tasks.named('check').configure {
+    dependsOn tasks.named('auditVisibleRiverHandoffInfrastructure'), tasks.named('auditHydrologyRetention'), tasks.named('auditRfix18FinalRiverRetention'),
+            tasks.named('auditFinalConnectionFreeze'), tasks.named('auditThirdPartyLakeCrossing'),
+            tasks.named('auditRenderedLakeConnections')
+}
+
+// SURFACE-FINAL: geometry first -> final surface paint -> final vegetation.
+tasks.register('auditSurfaceHydrologyFreeze', JavaExec) {
+    group = 'verification'
+    description = 'SURFACE-FINAL freezes runtime hydrology at exactly 115 authored rivers and zero imported visible owners.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJSurfaceHydrologyFreezeAudit'
+    maxHeapSize = '3G'
+}
+
+tasks.register('auditFinalSurfaceContinuity', JavaExec) {
+    group = 'verification'
+    description = 'SF-06 validates final-ground elevation palette, dry bank/blend repaint and wet-bed protection.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJFinalSurfaceContinuityAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.register('auditFinalSurfaceVegetation', JavaExec) {
+    group = 'verification'
+    description = 'SF-07 validates final-material vegetation gates for land, dry banks, water, rock, snow and sand.'
+    dependsOn tasks.named('validationClasses')
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.projectjapan.worldgen.PJFinalSurfaceVegetationAudit'
+    maxHeapSize = '4G'
+}
+
+tasks.named('check').configure {
+    dependsOn tasks.named('auditSurfaceHydrologyFreeze'),
+            tasks.named('auditFinalSurfaceContinuity'), tasks.named('auditFinalSurfaceVegetation')
+}
+
+tasks.register('freezeSurfaceFinal') {
+    group = 'verification'
+    description = 'SURFACE-FINAL hard gate: final surface/vegetation plus all frozen hydrology and performance regressions.'
+    dependsOn tasks.named('auditSurfaceHydrologyFreeze'),
+            tasks.named('auditFinalSurfaceContinuity'), tasks.named('auditFinalSurfaceVegetation'),
+            tasks.named('auditHydrology'), tasks.named('auditAuthoredRiverTopology'),
+            tasks.named('auditAuthoredRiverLakeIntersections'),
+            tasks.named('auditTerminalHydraulicApproach'), tasks.named('auditJunctionPlanform'),
+            tasks.named('auditJunctionBathymetry'), tasks.named('auditRiverLakeConnections'),
+            tasks.named('auditFinalLakeCrossSectionUnion'), tasks.named('auditFinalLakeShorelineAperture'),
+            tasks.named('auditSourceLakeTopology'), tasks.named('auditSourceLakeIntrusion'),
+            tasks.named('auditSourceLakeOutletSuspension'), tasks.named('auditLakeBankConflicts'),
+            tasks.named('auditLakeTopology'), tasks.named('benchmarkChunkFill')
+    doLast { println 'SURFACE SYSTEM FROZEN' }
+}
+
+tasks.register('freezeHydrologyTerrainFinal') {
+    group = 'verification'
+    description = 'Final ProjectJapan hydrology + terrain freeze after SURFACE-FINAL.'
+    dependsOn tasks.named('freezeSurfaceFinal'), tasks.named('auditHydrologyCoverage'),
+            tasks.named('auditHydrologyRetention'), tasks.named('auditRenderedLakeConnections'),
+            tasks.named('auditRuntimeRiverConnections'), tasks.named('auditFinalConnectionFreeze'),
+            tasks.named('auditLakeGeometry'), tasks.named('auditRetainedLakeVerticalAlignment')
+    doLast { println 'HYDROLOGY + TERRAIN FINAL' }
+}

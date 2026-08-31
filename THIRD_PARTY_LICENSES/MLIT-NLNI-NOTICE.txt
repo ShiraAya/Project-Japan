@@ -1,0 +1,16 @@
+National Land Numerical Information W05/W09 notice
+==================================================
+
+Provider: Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan
+River source: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html
+Lake source: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W09-v2_2.html
+Terms: https://nlftp.mlit.go.jp/ksj/other/agreement_02.html
+Retrieved: 2026-08-24
+
+The bundled Project Japan resources are edited/processed game derivatives. They directly project
+JGD2000 geometry, round and simplify coordinates, derive game widths and vertical profiles, and
+encode the result in a custom index. They are not official MLIT products.
+
+The W05 data page marks the river dataset "non-commercial". The provider's applicable terms,
+attribution requirements, limitations and downstream notice requirements remain applicable.
+Review the current linked terms before use or redistribution.
