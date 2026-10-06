@@ -1,0 +1,52 @@
+name: PJR 0.1.15 checkpoint build
+
+on:
+  push:
+    branches:
+      - PJR-0.1.15-checkpoint
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout checkpoint source
+        uses: actions/checkout@v4
+
+      - name: Assemble source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pjr-source
+          cat checkpoint-assets/PJR-0.1.15-source.part-* > /tmp/pjr-source/PJR-0.1.15-source.zip
+          unzip -q /tmp/pjr-source/PJR-0.1.15-source.zip -d /tmp/pjr-source/unpacked
+          test -f /tmp/pjr-source/unpacked/ProjectJapanRefined/gradlew
+          sha256sum /tmp/pjr-source/PJR-0.1.15-source.zip
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Build and validate
+        working-directory: /tmp/pjr-source/unpacked/ProjectJapanRefined
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x gradlew
+          ./gradlew --no-daemon check build
+
+      - name: Upload build outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PJR-0.1.15-build
+          path: /tmp/pjr-source/unpacked/ProjectJapanRefined/build/libs/*
+          if-no-files-found: warn
