@@ -1,0 +1,38 @@
+{
+  "project": "ProjectJapanRefined",
+  "short_name": "PJR",
+  "minecraft": "1.20.1",
+  "forge": "47.4.20",
+  "java": "17",
+  "mod_id": "pjr",
+  "lake_network": {
+    "originalRivers": 170,
+    "addedWaterways": 162,
+    "totalRivers": 332,
+    "reviewedLakes": 205,
+    "connectedLakes": 191,
+    "zeroInletLakes": 38,
+    "zeroOutletLakes": 26,
+    "noRiverContactLakes": 14,
+    "lakesWithDirectOceanContact": 6,
+    "verifiedDeclaredLakeEndpoints": 57,
+    "existingRiversWiderAt80Percent": 167,
+    "meanWidthRatioAt80Percent": 1.035524398821289
+  },
+  "version": "0.1.15-alpha",
+  "rivers": 332,
+  "lakes": 205,
+  "scale_xyz": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "requires_new_world": true,
+  "full_gameplay_tested": false,
+  "fluid_ticks_tested": false,
+  "pjm_renderer_tested": false,
+  "previous_release_metadata": "docs/history/0.1.14/RELEASE.json",
+  "status": "incomplete_checkpoint",
+  "release_ready": false,
+  "blocking_issue": "Rectangular false land in offshore source masks; final full verification incomplete"
+}
