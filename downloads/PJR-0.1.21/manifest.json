@@ -1,0 +1,42 @@
+{
+  "file": "ProjectJapanRefined-0.1.21-alpha.jar",
+  "size": 49949575,
+  "sha256": "edb0e703ade5b05c980a3b988dde5c4caab0db63a481e5fd48e4a5983c490749",
+  "parts": [
+    {
+      "name": "ProjectJapanRefined-0.1.21-alpha.jar.part01",
+      "size": 8000000,
+      "sha256": "55bb4c8011c6ad5bc5f6af5641c3089c27c61953fed4c424d6176e693eed3496"
+    },
+    {
+      "name": "ProjectJapanRefined-0.1.21-alpha.jar.part02",
+      "size": 8000000,
+      "sha256": "18a9c30a0d5813ce25462ddf593b10377f294eefe343a0eda44d376cba43c043"
+    },
+    {
+      "name": "ProjectJapanRefined-0.1.21-alpha.jar.part03",
+      "size": 8000000,
+      "sha256": "a1252496d39c251c57151f67d95c2023dd3bd01363210a5c37fa69626c26fb16"
+    },
+    {
+      "name": "ProjectJapanRefined-0.1.21-alpha.jar.part04",
+      "size": 8000000,
+      "sha256": "23a3f217785c615856236d82ad0f4f3a34c26455b6bf5fc2b374fa623d148e73"
+    },
+    {
+      "name": "ProjectJapanRefined-0.1.21-alpha.jar.part05",
+      "size": 8000000,
+      "sha256": "76d8c20ffbb81fe8de9f45998d789360bac7bd7d1eef7ad85b446e4fedaacbe3"
+    },
+    {
+      "name": "ProjectJapanRefined-0.1.21-alpha.jar.part06",
+      "size": 8000000,
+      "sha256": "6ce6f30a50959a01350cd8c3dbd48bb80ca6edd6483d0ef9e3cbf509c95b95ca"
+    },
+    {
+      "name": "ProjectJapanRefined-0.1.21-alpha.jar.part07",
+      "size": 1949575,
+      "sha256": "d130b6165cb8f179e8ed560e55e09e6a9211dc1698948a2b6f1b8d62737a2d05"
+    }
+  ]
+}
