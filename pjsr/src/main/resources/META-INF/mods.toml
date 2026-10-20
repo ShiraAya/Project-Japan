@@ -6,8 +6,12 @@ modId="pjr"
 version="${version}"
 displayName="PJSR — Project Japan Spline Roads edition"
 authors="Sora; AI-assisted implementation"
-description='''PJR: rebuilt Japan terrain generation, 356 rivers and 221 lakes.
-X:Y:Z = 0.5:0.5:0.5. Tokyo origin. AI-generated/AI-assisted mod.'''
+description='''Project Japan Spline Roads edition, based on PJR 0.1.24.
+Offline Takao Route 20 pilot with native SplineRoads 1.0.15 roads.
+X:Y:Z = 0.5:0.5:0.5. New worlds: PJSR preset; /pjsr visit.
+Road data © OpenStreetMap contributors, ODbL 1.0.
+https://www.openstreetmap.org/copyright
+AI-generated/AI-assisted mod.'''
 [[dependencies.pjr]]
 modId="forge"
 mandatory=true

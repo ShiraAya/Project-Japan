@@ -22,6 +22,8 @@ public final class RoadWorldState extends SavedData {
   private transient RoadData sr;
   private transient SrBridge bridge;
   private boolean internal;
+  private long observedRevision=-1;
+  private final Map<UUID,RoadRecord> observed=new HashMap<>();
   private transient java.nio.file.Path journal;
   public RoadWorldState() {}
   static RoadWorldState load(CompoundTag t){
@@ -55,7 +57,7 @@ public final class RoadWorldState extends SavedData {
       // Callback can precede a transactional replace. Suppress base immediately, observe final result at tick end.
       state.suppressed.add(id);state.persistOverrides();state.changed.add(id);state.setDirty();
     }};
-    state.setDirty();WORLDS.put(level,state);
+    state.observeNativeChanges();state.setDirty();WORLDS.put(level,state);
   }
   private void persistOverrides(){
     try{
@@ -67,11 +69,34 @@ public final class RoadWorldState extends SavedData {
       java.nio.file.Files.move(temp,journal,java.nio.file.StandardCopyOption.ATOMIC_MOVE,java.nio.file.StandardCopyOption.REPLACE_EXISTING);
     }catch(java.io.IOException e){throw new IllegalStateException("PJSR could not persist edit suppression",e);}
   }
+  private static CompoundTag authored(RoadRecord road){
+    var md=LaneTopology.metadata(road);
+    // SR may refresh derived end handles while only part of a corridor is registered.
+    // Those handles are not a player override; retain manual points and every other field.
+    return road.withLanePoints(md.points(md.points().stream().filter(p->!p.automatic()).toList())).save();
+  }
+  private void observeNativeChanges(){
+    long revision=sr.index.revision();if(revision==observedRevision)return;
+    boolean dirty=false;
+    // SR 1.0.15's atomic splitter temporarily mutes index.changed. Compare only
+    // this bounded pilot's introduced IDs after an index revision, never all SR roads.
+    for(UUID id:introduced){
+      if(suppressed.contains(id)||!bridge.records.containsKey(id))continue;
+      var live=sr.index.roads.get(id);var before=observed.get(id);
+      if(live==null){if(before!=null)dirty|=suppressed.add(id);}
+      else if(live.record!=before){
+        if(!authored(live.record).equals(authored(bridge.records.get(id))))dirty|=suppressed.add(id);
+        observed.put(id,live.record);
+      }
+    }
+    observedRevision=revision;
+    if(dirty){persistOverrides();setDirty();}
+  }
   public void markGenerated(int x,int z){generated.add(Geo.key(x,z));}
   public void markReady(int x,int z){ready.add(Geo.key(x,z));}
   public void drain(){
     // Native SR edits synchronously materialize their whole bounded unit. Future automatic writes are blocked.
-    changed.clear();
+    observeNativeChanges();changed.clear();
     int budget=4;
     for(long key:new ArrayList<>(ready)){
       if(budget--<=0)break;ready.remove(key);

@@ -6,3 +6,6 @@ libs/
 src/main/resources/assets/pjr/terrain/
 src/main/resources/assets/pjr/data/
 src/main/resources/assets/pjr/world/*.gz
+
+__pycache__/
+*.pyc

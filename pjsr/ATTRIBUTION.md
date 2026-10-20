@@ -87,3 +87,22 @@ GSI DEM10B PNG：全国 z12、城市 z14；负高程与缺测保留；0.5 m 高�
 GSI 最適化ベクトルタイル PMTiles（2026 年 7 月发布源），只提取 z14 WA5100 海域及 WA5200 河湖约束。来源：https://github.com/gsi-cyberjapan/optimal_bvmap ；编码说明：https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf 。来源哈希见 `data/gsi-coastal-source-lock.json`。
 
 加工包括海陆分类、内陆海碎片和微小离岛清理、约 4 m 海岸采样、双距离场、对数量化和 0.5 等比投影。以上是加工数据，非国土地理院直接发布的游戏地图；地理院资料使用条件与署名适用。现代岸线不代表某一天的最新施工状态。
+
+
+## PJSR 0.1.0 road pilot (2026-10-20)
+
+Road data © OpenStreetMap contributors, licensed under the Open Data Commons
+Open Database License (ODbL) 1.0. Copyright and attribution:
+https://www.openstreetmap.org/copyright
+License: https://opendatacommons.org/licenses/odbl/1-0/
+
+The retained OSM subset, derived route database, compiler and provenance are
+available in this branch under `pjsr/data/roads`, `pjsr/tools/compile_roads.py`,
+and `pjsr/src/main/resources/assets/pjr/roads`. These road databases are
+made available under ODbL 1.0; that data license does not replace code licenses.
+https://github.com/ShiraAya/Project-Japan/tree/PJSR/pjsr/data/roads
+
+This is a fixed Takao Route 20 engineering pilot, not national coverage and
+not a current navigation service. The PJR 0.1.24 terrain resources are restored
+byte-for-byte from the pinned original JAR; no geography is recomputed here.
+SR 1.0.15 remains an external dependency and is not redistributed in this branch.

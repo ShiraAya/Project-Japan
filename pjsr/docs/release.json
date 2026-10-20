@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0-alpha",
+  "file": "PJSR-0.1.0-alpha.jar",
+  "bytes": 49865596,
+  "sha256": "e70fa97eb0bcda96eb9d1caeb0f61d99e6695b40afbd54fa6a604e125fa6741c",
+  "baseline_resource_count": 1380,
+  "baseline_resources_unchanged": true,
+  "sr_bundled": false,
+  "integration_tests_bundled": false,
+  "minecraft": "1.20.1",
+  "forge": "47.4.20",
+  "sr": "1.0.15"
+}

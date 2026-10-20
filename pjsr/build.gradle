@@ -22,7 +22,8 @@ minecraft {
         server { args '--nogui' }
     }
 }
-dependencies { compileOnly files('libs/SR-1.0.15.jar'); runtimeOnly files('libs/SR-1.0.15.jar'); minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}" }
+repositories { flatDir { dirs 'libs' } }
+dependencies { implementation fg.deobf('local:SR:1.0.15'); minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}" }
 sourceSets {
     validation {
         java.srcDir 'src/validation/java'
@@ -41,8 +42,9 @@ tasks.withType(AbstractArchiveTask).configureEach {
 }
 tasks.named('jar').configure {
     from('ATTRIBUTION.md') { into 'META-INF' }
+    from('data/roads') { include 'manifest.json', 'download-provenance.json'; into 'META-INF/PJSR-roads' }
     from('THIRD_PARTY_LICENSES') { into 'META-INF/THIRD_PARTY_LICENSES' }
-    manifest.attributes('Implementation-Title': 'ProjectJapanRefined', 'Implementation-Version': project.version)
+    manifest.attributes('Implementation-Title': 'Project Japan Spline Roads edition', 'Implementation-Version': project.version)
     finalizedBy 'reobfJar'
 }
 tasks.register('validateCore', JavaExec) {
@@ -82,7 +84,7 @@ tasks.register('validateArtifactBudget') {
     doLast {
         def artifact = tasks.named('jar').get().archiveFile.get().asFile
         if (artifact.length() > 50_000_000L) throw new GradleException("Offline mod exceeds 50 MB: ${artifact.length()} bytes")
-        println "PJR offline artifact budget PASS: ${artifact.length()} / 50000000 bytes"
+        println "PJSR offline artifact budget PASS: ${artifact.length()} / 50000000 bytes"
     }
 }
 tasks.named('check').configure { dependsOn validateArtifactBudget }
@@ -126,3 +128,26 @@ tasks.register('validateCoastalWater', JavaExec) {
     mainClass = 'com.sora.pjr.validation.ScaleUpgradeValidation'
     maxHeapSize = '3G'
 }
+
+sourceSets {
+    integration {
+        java.srcDir 'src/integration/java'
+        compileClasspath += main.output + main.compileClasspath
+        runtimeClasspath += output + compileClasspath + main.runtimeClasspath
+    }
+}
+if (project.hasProperty('pjsrIntegration')) {
+    minecraft.runs.server {
+        property 'pjsr.integration', 'true'
+        mods { pjr { source sourceSets.integration } }
+    }
+}
+tasks.register('validatePjsrCore', JavaExec) {
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.PjsrCoreValidation'
+    maxHeapSize = '3G'
+}
+// PJR terrain bytes are pinned unchanged. Legacy geographical audits retain their
+// explicit tasks; the branch build checks the new road pipeline and artifact budget.
+tasks.named('check').configure { setDependsOn([validatePjsrCore, validateArtifactBudget]) }

@@ -12,7 +12,7 @@ public final class RoadEvents {
   private static boolean enabled(ServerLevel level){return level.getChunkSource().getGenerator() instanceof PjrChunkGenerator g&&g.roadsEnabled();}
   @SubscribeEvent(priority=EventPriority.HIGHEST) public static void levelLoad(LevelEvent.Load event){if(event.getLevel() instanceof ServerLevel level&&enabled(level))RoadWorldState.initialize(level);}
   @SubscribeEvent public static void levelUnload(LevelEvent.Unload event){if(event.getLevel() instanceof ServerLevel level)RoadWorldState.unload(level);}
-  @SubscribeEvent public static void chunkLoad(ChunkEvent.Load event){if(event.getLevel() instanceof ServerLevel level&&enabled(level)){var p=event.getChunk().getPos();RoadWorldState.get(level).markReady(p.x,p.z);}}
+  @SubscribeEvent public static void chunkLoad(ChunkEvent.Load event){if(event.getLevel() instanceof ServerLevel level&&enabled(level)){var p=event.getChunk().getPos();var g=(PjrChunkGenerator)level.getChunkSource().getGenerator();if(!g.roads().plan.inChunk(p.x,p.z).isEmpty()){if(event.isNewChunk())RoadWorldState.get(level).markGenerated(p.x,p.z);RoadWorldState.get(level).markReady(p.x,p.z);}}}
   @SubscribeEvent public static void chunkRead(ChunkDataEvent.Load event){
     if(event.getLevel() instanceof ServerLevel level&&enabled(level)&&event.getData().getBoolean("PJSRGeneratedV1")){var p=event.getChunk().getPos();RoadWorldState.get(level).markGenerated(p.x,p.z);}
   }

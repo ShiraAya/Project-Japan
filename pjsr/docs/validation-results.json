@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0-alpha",
+  "date": "2026-10-20",
+  "minecraft": "1.20.1",
+  "forge": "47.4.20",
+  "java": 17,
+  "sr": "1.0.15",
+  "python_tests": 7,
+  "core_checks": 1845,
+  "server_first_generation_checks": 661,
+  "server_restart_checks": 33,
+  "native_road_units": 14,
+  "test_chunks": 269,
+  "collider_center_samples": 568,
+  "status": "PASS: regional dedicated-server prototype",
+  "client_acceptance": "not performed",
+  "crash_injection": "not performed"
+}

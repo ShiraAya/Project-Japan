@@ -1,3 +1,14 @@
+# PJSR — Project Japan Spline Roads edition
+
+此分支基于 PJR 0.1.24，当前版本 **0.1.0-alpha**，实现高尾国道20号的真实小区域自动道路原型。
+
+**构建项目在 [`pjsr/`](pjsr/)**。请先阅读 [安装与构建说明](pjsr/README.md) 和 [验证与限制](pjsr/PROGRESS.md)。
+仓库根目录的旧 PJ 工程保留为历史内容；不要在根目录构建 PJSR。主分支不受影响。
+
+---
+
+以下为原仓库说明：
+
 # Project Japan
 
 **Project Japan V1.0.0** is a Minecraft Forge mod focused on recreating the terrain and geographic environment of Japan at a reduced real-world scale.
