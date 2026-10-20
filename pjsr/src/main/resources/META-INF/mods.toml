@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="pjr"
+version="${version}"
+displayName="PJSR — Project Japan Spline Roads edition"
+authors="Sora; AI-assisted implementation"
+description='''PJR: rebuilt Japan terrain generation, 356 rivers and 221 lakes.
+X:Y:Z = 0.5:0.5:0.5. Tokyo origin. AI-generated/AI-assisted mod.'''
+[[dependencies.pjr]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.20,48)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.pjr]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.pjr]]
+modId="splineroads"
+mandatory=true
+versionRange="[1.0.15,1.0.16)"
+ordering="AFTER"
+side="BOTH"

@@ -1,0 +1,2 @@
+import com.sora.pjr.core.*;import java.nio.file.*;
+public class SectionProbe{public static void main(String[]a)throws Exception{var e=WorldEngine.load();Path out=Path.of(a[0]);Files.createDirectories(out);for(int[] f:new int[][]{{-80332,3000,4300},{-165326,28100,29400}}){StringBuilder b=new StringBuilder("x,z,natural,ground,water,wet,containment\n");for(int z=f[1];z<=f[2];z++){var g=e.geometry(f[0],z);b.append(f[0]+","+z+","+g.naturalY()+","+g.groundY()+","+g.waterY()+","+g.wet()+","+g.containment()+"\n");}Files.writeString(out.resolve("section-"+f[0]+".csv"),b);}}}

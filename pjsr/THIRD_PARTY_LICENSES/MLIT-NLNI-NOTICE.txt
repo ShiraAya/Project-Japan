@@ -1,0 +1,19 @@
+National Land Numerical Information W05/W09 notice
+==================================================
+
+Provider: Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan
+River source: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html
+Lake source: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W09-v2_2.html
+Terms: https://nlftp.mlit.go.jp/ksj/other/agreement_02.html
+Original archives downloaded and SHA-256 verified for PJR: 2026-09-17
+
+ProjectJapanRefined contains processed geographic derivatives, not official MLIT
+products. Its independently written compiler projects and simplifies source
+geometry, selects river routes, and preserves lake rings. Inferred connectors are
+identified in the accompanying audit. Game water levels, widths, banks and beds
+are computed by the PJR implementation and are not surveyed MLIT attributes.
+Exact original archive URLs and SHA-256 values appear in data/source-lock.json.
+
+The W05 data page marks the river dataset "non-commercial". The provider's
+applicable data terms and attribution requirements remain attached to the data.
+These notices do not change the licensing of the separately written PJR code.

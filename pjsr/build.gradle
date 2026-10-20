@@ -1,0 +1,128 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+}
+group = 'com.sora.pjr'
+version = mod_version
+base { archivesName = 'PJSR' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.withSourcesJar()
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+    copyIdeResources = true
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'info'
+            mods { pjr { source sourceSets.main } }
+        }
+        client {}
+        server { args '--nogui' }
+    }
+}
+dependencies { compileOnly files('libs/SR-1.0.15.jar'); runtimeOnly files('libs/SR-1.0.15.jar'); minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}" }
+sourceSets {
+    validation {
+        java.srcDir 'src/validation/java'
+        compileClasspath += main.output + main.compileClasspath
+        runtimeClasspath += output + compileClasspath + main.runtimeClasspath
+    }
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.named('processResources').configure {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/mods.toml') { expand version: project.version }
+}
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+tasks.named('jar').configure {
+    from('ATTRIBUTION.md') { into 'META-INF' }
+    from('THIRD_PARTY_LICENSES') { into 'META-INF/THIRD_PARTY_LICENSES' }
+    manifest.attributes('Implementation-Title': 'ProjectJapanRefined', 'Implementation-Version': project.version)
+    finalizedBy 'reobfJar'
+}
+tasks.register('validateCore', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.ScaleUpgradeValidation'
+    systemProperty 'pjr.preview', 'true'
+    maxHeapSize = '3G'
+}
+tasks.register('validateChunkFill', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.ForgeValidation'
+    maxHeapSize = '2G'
+}
+tasks.register('previewTerrain', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.ShoreValidation'
+    maxHeapSize = '2G'
+}
+tasks.named('check').configure { dependsOn validateCore, validateChunkFill }
+tasks.register('validatePrecisionAtlas', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.core.PrecisionTerrainValidation'
+    maxHeapSize = '512M'
+}
+tasks.named('check').configure { dependsOn validatePrecisionAtlas }
+tasks.register('validateArtifactBudget') {
+    group = 'verification'
+    dependsOn 'reobfJar'
+    doLast {
+        def artifact = tasks.named('jar').get().archiveFile.get().asFile
+        if (artifact.length() > 50_000_000L) throw new GradleException("Offline mod exceeds 50 MB: ${artifact.length()} bytes")
+        println "PJR offline artifact budget PASS: ${artifact.length()} / 50000000 bytes"
+    }
+}
+tasks.named('check').configure { dependsOn validateArtifactBudget }
+
+tasks.register('previewMorphology', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.MorphologyValidation'
+    maxHeapSize = '2G'
+}
+
+tasks.register('previewShoreFit', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.ShoreFitValidation'
+    maxHeapSize = '2G'
+}
+
+tasks.register('previewWaterVolume', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.WaterVolumeValidation'
+    maxHeapSize = '2G'
+}
+
+tasks.register('validateRegionalRivers', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.RegionalRiverValidation'
+    maxHeapSize = '2G'
+}
+
+tasks.register('validateCoastalWater', JavaExec) {
+    group = 'verification'
+    dependsOn validationClasses
+    classpath = sourceSets.validation.runtimeClasspath
+    mainClass = 'com.sora.pjr.validation.ScaleUpgradeValidation'
+    maxHeapSize = '3G'
+}

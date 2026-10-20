@@ -1,0 +1,1046 @@
+<?xml version='1.0' encoding='utf-8'?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (1294 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+  <node id="252402480" visible="true" version="16" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6315247" lon="139.2863406">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="医療センター入口" />
+    <tag k="name:en" v="Medical Center" />
+    <tag k="name:ja" v="医療センター入口" />
+  </node>
+  <node id="290429201" visible="true" version="2" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6465965" lon="139.2898992" />
+  <node id="290429205" visible="true" version="12" changeset="137818621" timestamp="2023-06-27T05:48:21Z" user="postown" uid="4480756" lat="35.6449614" lon="139.2851188">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="町田街道入口" />
+    <tag k="name:en" v="Machidakaido Ent." />
+  </node>
+  <node id="290429210" visible="true" version="2" changeset="22015856" timestamp="2014-04-29T06:10:18Z" user="InagakiM" uid="133763" lat="35.6448259" lon="139.2847931" />
+  <node id="290429219" visible="true" version="2" changeset="19170047" timestamp="2013-11-28T23:57:17Z" user="Jochtk" uid="1568735" lat="35.6441888" lon="139.2834832" />
+  <node id="290429236" visible="true" version="13" changeset="178089534" timestamp="2026-02-04T11:07:14Z" user="近場行き" uid="12272282" lat="35.6428883" lon="139.2814968">
+    <tag k="junction" v="yes" />
+    <tag k="name" v="高尾駅前" />
+    <tag k="name:en" v="Takao Sta." />
+    <tag k="name:ja" v="高尾駅前" />
+    <tag k="source" v="Bing,2011-02; survey,2013-06" />
+  </node>
+  <node id="290429265" visible="true" version="6" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6427061" lon="139.2809228" />
+  <node id="290429284" visible="true" version="6" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6425143" lon="139.2799050" />
+  <node id="290429313" visible="true" version="4" changeset="38743538" timestamp="2016-04-21T01:36:20Z" user="yoshitk" uid="1003241" lat="35.6453440" lon="139.2861558" />
+  <node id="290429446" visible="true" version="8" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6411631" lon="139.2739182" />
+  <node id="290429487" visible="true" version="7" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6409455" lon="139.2736613" />
+  <node id="290429602" visible="true" version="3" changeset="23107195" timestamp="2014-06-23T18:06:40Z" user="InagakiM" uid="133763" lat="35.6390333" lon="139.2714708" />
+  <node id="290429608" visible="true" version="3" changeset="23107195" timestamp="2014-06-23T18:06:33Z" user="InagakiM" uid="133763" lat="35.6389188" lon="139.2713970" />
+  <node id="290429620" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6388397" lon="139.2713587" />
+  <node id="290429636" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6387095" lon="139.2713136" />
+  <node id="290429647" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6385447" lon="139.2712833" />
+  <node id="290429657" visible="true" version="5" changeset="34420296" timestamp="2015-10-04T06:28:18Z" user="y-yamano" uid="1324324" lat="35.6383129" lon="139.2712435" />
+  <node id="290429695" visible="true" version="4" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6374614" lon="139.2710212" />
+  <node id="290429705" visible="true" version="4" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6372111" lon="139.2709077" />
+  <node id="290429716" visible="true" version="3" changeset="23107195" timestamp="2014-06-23T18:06:33Z" user="InagakiM" uid="133763" lat="35.6367451" lon="139.2706897" />
+  <node id="290429727" visible="true" version="4" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6364916" lon="139.2705736" />
+  <node id="290429737" visible="true" version="4" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6363845" lon="139.2705314" />
+  <node id="290429772" visible="true" version="4" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6356196" lon="139.2704573" />
+  <node id="290429783" visible="true" version="4" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6352690" lon="139.2704781" />
+  <node id="290429793" visible="true" version="4" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6350371" lon="139.2705163" />
+  <node id="290429807" visible="true" version="3" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6347735" lon="139.2705877" />
+  <node id="290429861" visible="true" version="4" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6335040" lon="139.2710439" />
+  <node id="290429873" visible="true" version="5" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6333871" lon="139.2710734" />
+  <node id="290429880" visible="true" version="5" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6331963" lon="139.2710859" />
+  <node id="290429891" visible="true" version="4" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6330436" lon="139.2710771" />
+  <node id="290429904" visible="true" version="6" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6328572" lon="139.2710479" />
+  <node id="290429912" visible="true" version="4" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6325317" lon="139.2708693" />
+  <node id="290429922" visible="true" version="5" changeset="24724589" timestamp="2014-08-13T14:22:51Z" user="InagakiM" uid="133763" lat="35.6317639" lon="139.2701061" />
+  <node id="290429932" visible="true" version="5" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6315694" lon="139.2699143" />
+  <node id="290429938" visible="true" version="4" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6313868" lon="139.2697662" />
+  <node id="290429961" visible="true" version="3" changeset="24724589" timestamp="2014-08-13T14:22:51Z" user="InagakiM" uid="133763" lat="35.6312944" lon="139.2697136" />
+  <node id="290429978" visible="true" version="3" changeset="24724589" timestamp="2014-08-13T14:22:51Z" user="InagakiM" uid="133763" lat="35.6311833" lon="139.2696772" />
+  <node id="290429984" visible="true" version="10" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6309532" lon="139.2696161">
+    <tag k="junction" v="yes" />
+    <tag k="name" v="高尾山入口" />
+    <tag k="name:en" v="Mt. Takao" />
+  </node>
+  <node id="290429990" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6308800" lon="139.2695964" />
+  <node id="290429994" visible="true" version="3" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6307979" lon="139.2695768" />
+  <node id="290429999" visible="true" version="5" changeset="119597260" timestamp="2022-04-11T22:09:02Z" user="Caledonia659" uid="14658772" lat="35.6305453" lon="139.2696007" />
+  <node id="290430005" visible="true" version="2" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6301936" lon="139.2696478" />
+  <node id="290430033" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6301125" lon="139.2696482" />
+  <node id="290430038" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6300308" lon="139.2696336" />
+  <node id="290430043" visible="true" version="5" changeset="135691886" timestamp="2023-05-04T09:23:11Z" user="Caledonia659" uid="14658772" lat="35.6299709" lon="139.2696091" />
+  <node id="290430048" visible="true" version="3" changeset="180578448" timestamp="2026-03-29T11:31:47Z" user="postown" uid="4480756" lat="35.6296702" lon="139.2694001" />
+  <node id="290430052" visible="true" version="3" changeset="180578448" timestamp="2026-03-29T11:31:47Z" user="postown" uid="4480756" lat="35.6294934" lon="139.2692910" />
+  <node id="290430057" visible="true" version="5" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6292889" lon="139.2691908">
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="高尾山入口南" />
+    <tag k="name:en" v="Mt. Takao South" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="344157146" visible="true" version="14" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6425564" lon="139.2802017">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="高尾駅前第二" />
+    <tag k="name:en" v="Takao Sta. daini" />
+    <tag k="name:ja" v="高尾駅前第二" />
+    <tag k="source" v="Bing,2011-02; survey,2013-06" />
+  </node>
+  <node id="344157921" visible="true" version="12" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6404316" lon="139.2729400">
+    <tag k="junction" v="yes" />
+    <tag k="name" v="西浅川" />
+    <tag k="name:ja-Latn" v="Nishiasakawa" />
+  </node>
+  <node id="393106300" visible="true" version="5" changeset="156598330" timestamp="2024-09-14T07:03:23Z" user="postown" uid="4480756" lat="35.6475212" lon="139.2926686">
+    <tag k="junction" v="yes" />
+    <tag k="name" v="多摩御陵入口" />
+    <tag k="name:en" v="Tamagoryo Ent." />
+  </node>
+  <node id="776922301" visible="true" version="14" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6313218" lon="139.2861834">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="医療センター入口" />
+    <tag k="name:en" v="Medical Center" />
+    <tag k="name:ja" v="医療センター入口" />
+  </node>
+  <node id="841635517" visible="true" version="8" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6317285" lon="139.2836921" />
+  <node id="841635520" visible="true" version="4" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6316411" lon="139.2825486" />
+  <node id="841635523" visible="true" version="4" changeset="5483582" timestamp="2010-08-13T16:36:26Z" user="techstrom" uid="39534" lat="35.6313677" lon="139.2816134" />
+  <node id="841635533" visible="true" version="8" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6313508" lon="139.2860533" />
+  <node id="841635536" visible="true" version="7" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6316761" lon="139.2842128" />
+  <node id="841635539" visible="true" version="8" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6317261" lon="139.2835601" />
+  <node id="841635548" visible="true" version="3" changeset="5483582" timestamp="2010-08-13T16:36:30Z" user="techstrom" uid="39534" lat="35.6315388" lon="139.2821314" />
+  <node id="841635554" visible="true" version="6" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6316117" lon="139.2846928" />
+  <node id="841635556" visible="true" version="4" changeset="5483582" timestamp="2010-08-13T16:36:26Z" user="techstrom" uid="39534" lat="35.6308106" lon="139.2804422" />
+  <node id="841648844" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:34Z" user="InagakiM" uid="133763" lat="35.6307907" lon="139.2797677" />
+  <node id="841648846" visible="true" version="3" changeset="5483582" timestamp="2010-08-13T16:36:25Z" user="techstrom" uid="39534" lat="35.6294241" lon="139.2771432" />
+  <node id="841648848" visible="true" version="10" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6319215" lon="139.2837143" />
+  <node id="841648854" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:34Z" user="InagakiM" uid="133763" lat="35.6297203" lon="139.2771281" />
+  <node id="841648856" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6305726" lon="139.2793569" />
+  <node id="841648857" visible="true" version="4" changeset="148988577" timestamp="2024-03-21T22:24:15Z" user="postown" uid="4480756" lat="35.6262302" lon="139.2655853" />
+  <node id="841648859" visible="true" version="6" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6319233" lon="139.2834621" />
+  <node id="841648863" visible="true" version="3" changeset="5483582" timestamp="2010-08-13T16:36:26Z" user="techstrom" uid="39534" lat="35.6303460" lon="139.2795130" />
+  <node id="841648865" visible="true" version="7" changeset="98829116" timestamp="2021-02-06T21:00:17Z" user="postown" uid="4480756" lat="35.6315496" lon="139.2862250" />
+  <node id="841648867" visible="true" version="4" changeset="148988577" timestamp="2024-03-21T22:24:15Z" user="postown" uid="4480756" lat="35.6264711" lon="139.2655830" />
+  <node id="841648877" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6303286" lon="139.2788065" />
+  <node id="841648879" visible="true" version="4" changeset="148988577" timestamp="2024-03-21T22:24:15Z" user="postown" uid="4480756" lat="35.6261220" lon="139.2652440" />
+  <node id="841648881" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6318939" lon="139.2827037" />
+  <node id="841648882" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6316561" lon="139.2816943" />
+  <node id="841648884" visible="true" version="3" changeset="5483582" timestamp="2010-08-13T16:36:25Z" user="techstrom" uid="39534" lat="35.6300956" lon="139.2789532" />
+  <node id="841648891" visible="true" version="3" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6317981" lon="139.2848805" />
+  <node id="841648894" visible="true" version="5" changeset="148988577" timestamp="2024-03-21T22:24:15Z" user="postown" uid="4480756" lat="35.6263154" lon="139.2651434" />
+  <node id="841648899" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6300853" lon="139.2781938" />
+  <node id="841648901" visible="true" version="4" changeset="148988577" timestamp="2024-03-21T22:24:15Z" user="postown" uid="4480756" lat="35.6260063" lon="139.2649355" />
+  <node id="841648902" visible="true" version="2" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6318015" lon="139.2821979" />
+  <node id="841648903" visible="true" version="3" changeset="5483582" timestamp="2010-08-13T16:36:26Z" user="techstrom" uid="39534" lat="35.6305448" lon="139.2799403" />
+  <node id="841648907" visible="true" version="6" changeset="148988577" timestamp="2024-03-21T22:24:15Z" user="postown" uid="4480756" lat="35.6260099" lon="139.2645295" />
+  <node id="841648910" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6310915" lon="139.2803631" />
+  <node id="841648912" visible="true" version="3" changeset="5483582" timestamp="2010-08-13T16:36:25Z" user="techstrom" uid="39534" lat="35.6298335" lon="139.2783116" />
+  <node id="841648915" visible="true" version="3" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6318728" lon="139.2844371" />
+  <node id="841648917" visible="true" version="6" changeset="148988577" timestamp="2024-03-21T22:24:15Z" user="postown" uid="4480756" lat="35.6261739" lon="139.2648284" />
+  <node id="855104768" visible="true" version="4" changeset="148988577" timestamp="2024-03-21T22:24:15Z" user="postown" uid="4480756" lat="35.6258596" lon="139.2646487" />
+  <node id="855104783" visible="true" version="2" changeset="5483582" timestamp="2010-08-13T16:36:26Z" user="techstrom" uid="39534" lat="35.6311223" lon="139.2810456" />
+  <node id="855104793" visible="true" version="2" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6314233" lon="139.2810800" />
+  <node id="855104806" visible="true" version="3" changeset="17046783" timestamp="2013-07-22T10:52:33Z" user="InagakiM" uid="133763" lat="35.6316821" lon="139.2828437" />
+  <node id="855104807" visible="true" version="2" changeset="17046783" timestamp="2013-07-22T10:52:34Z" user="InagakiM" uid="133763" lat="35.6319080" lon="139.2841419" />
+  <node id="858875931" visible="true" version="1" changeset="5483582" timestamp="2010-08-13T16:36:10Z" user="techstrom" uid="39534" lat="35.6296282" lon="139.2777652" />
+  <node id="1456989698" visible="true" version="7" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6378331" lon="139.2711390" />
+  <node id="1456989873" visible="true" version="6" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6380933" lon="139.2711992">
+    <tag k="junction" v="yes" />
+    <tag k="name" v="落合" />
+  </node>
+  <node id="1456996948" visible="true" version="6" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6413632" lon="139.2740637" />
+  <node id="1456997761" visible="true" version="6" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6418497" lon="139.2755144" />
+  <node id="1456998134" visible="true" version="7" changeset="104456444" timestamp="2021-05-10T13:46:00Z" user="KOIZUMI Satoru" uid="6969173" lat="35.6420669" lon="139.2767626" />
+  <node id="1456998198" visible="true" version="6" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6421439" lon="139.2772558" />
+  <node id="1457004092" visible="true" version="4" changeset="156522311" timestamp="2024-09-12T10:55:22Z" user="postown" uid="4480756" lat="35.6447717" lon="139.2846673" />
+  <node id="1457009535" visible="true" version="5" changeset="156599393" timestamp="2024-09-14T07:45:05Z" user="postown" uid="4480756" lat="35.6459034" lon="139.2878140" />
+  <node id="1457010170" visible="true" version="4" changeset="56325172" timestamp="2018-02-13T14:29:35Z" user="gamdabar" uid="7531082" lat="35.6462928" lon="139.2890026" />
+  <node id="1568711661" visible="true" version="5" changeset="146905608" timestamp="2024-01-31T13:43:17Z" user="KOIZUMI Satoru" uid="6969173" lat="35.6361594" lon="139.2704937" />
+  <node id="1568711663" visible="true" version="5" changeset="146905608" timestamp="2024-01-31T13:43:17Z" user="KOIZUMI Satoru" uid="6969173" lat="35.6363201" lon="139.2705136" />
+  <node id="1568711675" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6391329" lon="139.2715547" />
+  <node id="1568711676" visible="true" version="5" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6392502" lon="139.2716619" />
+  <node id="1568711685" visible="true" version="6" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6394004" lon="139.2718093" />
+  <node id="1780542944" visible="true" version="6" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6392231" lon="139.2716341" />
+  <node id="1780542958" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6394228" lon="139.2718323" />
+  <node id="2249012434" visible="true" version="3" changeset="128205947" timestamp="2022-10-29T10:53:50Z" user="seichan1028" uid="6427548" lat="35.6369179" lon="139.2707744" />
+  <node id="2249012463" visible="true" version="5" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6422090" lon="139.2776911" />
+  <node id="2249012465" visible="true" version="6" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6339946" lon="139.2708613">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="高尾山口駅北" />
+  </node>
+  <node id="2249012471" visible="true" version="7" changeset="180578448" timestamp="2026-03-29T11:31:47Z" user="postown" uid="4480756" lat="35.6323449" lon="139.2706923">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="高尾山口駅前" />
+  </node>
+  <node id="2249012473" visible="true" version="6" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6424117" lon="139.2792395" />
+  <node id="2249012543" visible="true" version="9" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6422973" lon="139.2783177">
+    <tag k="junction" v="yes" />
+    <tag k="name" v="高尾駅前第三" />
+    <tag k="name:en" v="Takao Sta. daisan" />
+    <tag k="name:ja" v="高尾駅前第三" />
+    <tag k="source" v="Bing,2011-02; survey,2013-06" />
+  </node>
+  <node id="2249012586" visible="true" version="3" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6365964" lon="139.2706213" />
+  <node id="2249012621" visible="true" version="4" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6398275" lon="139.2722377" />
+  <node id="2258334084" visible="true" version="3" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6357811" lon="139.2704611" />
+  <node id="2258334113" visible="true" version="3" changeset="133774663" timestamp="2023-03-17T06:15:57Z" user="postown" uid="4480756" lat="35.6360527" lon="139.2704851" />
+  <node id="2262709247" visible="true" version="3" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6354435" lon="139.2704624" />
+  <node id="2309377330" visible="true" version="4" changeset="131837311" timestamp="2023-01-29T11:48:16Z" user="seichan1028" uid="6427548" lat="35.6470014" lon="139.2911067">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="2309377334" visible="true" version="3" changeset="131837311" timestamp="2023-01-29T11:48:16Z" user="seichan1028" uid="6427548" lat="35.6470903" lon="139.2913626" />
+  <node id="2421948169" visible="true" version="3" changeset="156599393" timestamp="2024-09-14T07:45:05Z" user="postown" uid="4480756" lat="35.6432694" lon="139.2820711" />
+  <node id="2556523230" visible="true" version="2" changeset="156663443" timestamp="2024-09-15T20:41:37Z" user="postown" uid="4480756" lat="35.6438287" lon="139.2828755" />
+  <node id="2559462934" visible="true" version="1" changeset="19205465" timestamp="2013-12-01T07:31:21Z" user="Jochtk" uid="1568735" lat="35.6435165" lon="139.2824144" />
+  <node id="2569095732" visible="true" version="6" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6420253" lon="139.2765043">
+    <tag k="junction" v="yes" />
+    <tag k="name" v="浅川上宿" />
+    <tag k="name:en" v="Asakawa Kamijuku" />
+    <tag k="source" v="Bing,2011-02;survey,2013-06" />
+  </node>
+  <node id="2569095733" visible="true" version="4" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6416051" lon="139.2743991" />
+  <node id="2569095734" visible="true" version="3" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6415359" lon="139.2742463" />
+  <node id="2929660290" visible="true" version="2" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6417089" lon="139.2748496" />
+  <node id="2929660296" visible="true" version="2" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6326792" lon="139.2709688" />
+  <node id="2929660321" visible="true" version="2" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6414653" lon="139.2741562" />
+  <node id="2929660375" visible="true" version="2" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6416494" lon="139.2745620" />
+  <node id="2929660385" visible="true" version="3" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6410586" lon="139.2738092" />
+  <node id="2929660407" visible="true" version="2" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6415485" lon="139.2742655" />
+  <node id="2963663309" visible="true" version="3" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6417569" lon="139.2750721">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="両界橋東" />
+    <tag k="source" v="Bing,2012-11; survey,2014-07" />
+  </node>
+  <node id="3014371472" visible="true" version="5" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6310336" lon="139.2696394" />
+  <node id="3554926840" visible="true" version="2" changeset="56325172" timestamp="2018-02-13T14:29:35Z" user="gamdabar" uid="7531082" lat="35.6461258" lon="139.2885074" />
+  <node id="3554926860" visible="true" version="2" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6466539" lon="139.2900632" />
+  <node id="3554926861" visible="true" version="4" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6466605" lon="139.2900784">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="3554926865" visible="true" version="3" changeset="131837311" timestamp="2023-01-29T11:48:16Z" user="seichan1028" uid="6427548" lat="35.6468394" lon="139.2906140" />
+  <node id="3554926872" visible="true" version="3" changeset="131837311" timestamp="2023-01-29T11:48:16Z" user="seichan1028" uid="6427548" lat="35.6471573" lon="139.2915658" />
+  <node id="3645342862" visible="true" version="1" changeset="32557262" timestamp="2015-07-11T04:01:20Z" user="ka_ry" uid="2940822" lat="35.6382165" lon="139.2712249" />
+  <node id="3771401882" visible="true" version="2" changeset="60265911" timestamp="2018-06-29T04:59:34Z" user="yoshitk" uid="1003241" lat="35.6402181" lon="139.2726834" />
+  <node id="3771401885" visible="true" version="3" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6401141" lon="139.2725643" />
+  <node id="3771401886" visible="true" version="3" changeset="79658498" timestamp="2020-01-16T16:39:35Z" user="Ryo-a" uid="631141" lat="35.6407030" lon="139.2733077" />
+  <node id="4003654292" visible="true" version="3" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6456429" lon="139.2870638" />
+  <node id="4095092825" visible="true" version="1" changeset="38263939" timestamp="2016-04-03T10:04:19Z" user="海野晋平" uid="3773891" lat="35.6295556" lon="139.2775440" />
+  <node id="4382968561" visible="true" version="3" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6314864" lon="139.2853754" />
+  <node id="5776766093" visible="true" version="1" changeset="60949229" timestamp="2018-07-22T10:57:58Z" user="zyxzyx" uid="7707735" lat="35.6319223" lon="139.2830108" />
+  <node id="5776766094" visible="true" version="1" changeset="60949229" timestamp="2018-07-22T10:57:58Z" user="zyxzyx" uid="7707735" lat="35.6317049" lon="139.2830548" />
+  <node id="6041099464" visible="true" version="1" changeset="64221802" timestamp="2018-11-06T08:24:08Z" user="porinky" uid="9047508" lat="35.6446370" lon="139.2843878" />
+  <node id="6717727794" visible="true" version="2" changeset="131837311" timestamp="2023-01-29T11:48:16Z" user="seichan1028" uid="6427548" lat="35.6469600" lon="139.2909685">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6717727797" visible="true" version="1" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6466354" lon="139.2900105">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6717727801" visible="true" version="1" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6450122" lon="139.2852653">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6717727803" visible="true" version="1" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6459480" lon="139.2879532" />
+  <node id="6717727804" visible="true" version="1" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6458862" lon="139.2877615" />
+  <node id="6717727805" visible="true" version="2" changeset="156599393" timestamp="2024-09-14T07:45:05Z" user="postown" uid="4480756" lat="35.6459254" lon="139.2878826">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="6717727806" visible="true" version="1" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6466778" lon="139.2901330" />
+  <node id="6717728045" visible="true" version="1" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6474231" lon="139.2923727">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="backward" />
+  </node>
+  <node id="6717728046" visible="true" version="3" changeset="156620698" timestamp="2024-09-14T17:01:25Z" user="postown" uid="4480756" lat="35.6474574" lon="139.2924793">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6717728048" visible="true" version="3" changeset="178089534" timestamp="2026-02-04T11:07:14Z" user="近場行き" uid="12272282" lat="35.6428096" lon="139.2812682">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="backward" />
+  </node>
+  <node id="6717728049" visible="true" version="2" changeset="178089534" timestamp="2026-02-04T11:07:14Z" user="近場行き" uid="12272282" lat="35.6430102" lon="139.2816995">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="forward" />
+  </node>
+  <node id="6717728053" visible="true" version="4" changeset="180604954" timestamp="2026-03-29T21:59:23Z" user="postown" uid="4480756" lat="35.6428288" lon="139.2813313">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6717728054" visible="true" version="2" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6426132" lon="139.2805239" />
+  <node id="6717728055" visible="true" version="2" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6403143" lon="139.2728087">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="backward" />
+  </node>
+  <node id="6717728056" visible="true" version="1" changeset="73434588" timestamp="2019-08-17T03:58:55Z" user="hayashi" uid="621319" lat="35.6405262" lon="139.2730705">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="forward" />
+  </node>
+  <node id="6717728058" visible="true" version="2" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6404790" lon="139.2730054">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6717728059" visible="true" version="2" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6403524" lon="139.2728573">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="7037880545" visible="true" version="3" changeset="178089534" timestamp="2026-02-04T11:07:14Z" user="近場行き" uid="12272282" lat="35.6429628" lon="139.2816314">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="7137194481" visible="true" version="1" changeset="79658498" timestamp="2020-01-16T16:39:35Z" user="Ryo-a" uid="631141" lat="35.6440301" lon="139.2832110" />
+  <node id="8400745604" visible="true" version="2" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6317020" lon="139.2854524" />
+  <node id="8668936632" visible="true" version="2" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6416744" lon="139.2746694" />
+  <node id="8718613307" visible="true" version="2" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6419242" lon="139.2759024" />
+  <node id="8818405804" visible="true" version="3" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6366630" lon="139.2706494">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="traffic_signals" />
+    <tag k="name" v="落合橋北" />
+  </node>
+  <node id="9641116677" visible="true" version="1" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6399699" lon="139.2723939" />
+  <node id="9641116678" visible="true" version="1" changeset="119308804" timestamp="2022-04-04T16:11:22Z" user="Caledonia659" uid="14658772" lat="35.6307162" lon="139.2695792" />
+  <node id="9817430258" visible="true" version="1" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6426563" lon="139.2807238" />
+  <node id="9817430259" visible="true" version="1" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6423838" lon="139.2790139" />
+  <node id="9817430260" visible="true" version="1" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6423544" lon="139.2787725" />
+  <node id="9817430261" visible="true" version="1" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6422541" lon="139.2780027" />
+  <node id="9817430262" visible="true" version="1" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6415784" lon="139.2743281" />
+  <node id="9817430297" visible="true" version="2" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6413896" lon="139.2740839" />
+  <node id="9817430298" visible="true" version="1" changeset="122376212" timestamp="2022-06-14T14:50:51Z" user="seichan1028" uid="6427548" lat="35.6412650" lon="139.2739901" />
+  <node id="9930032564" visible="true" version="1" changeset="124447068" timestamp="2022-08-03T17:42:40Z" user="Caledonia659" uid="14658772" lat="35.6473318" lon="139.2920888" />
+  <node id="9959031915" visible="true" version="4" changeset="180578448" timestamp="2026-03-29T11:31:47Z" user="postown" uid="4480756" lat="35.6322713" lon="139.2706193">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="10137516607" visible="true" version="1" changeset="128205947" timestamp="2022-10-29T10:53:50Z" user="seichan1028" uid="6427548" lat="35.6408425" lon="139.2735111" />
+  <node id="10861840233" visible="true" version="2" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6340661" lon="139.2708365">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11658046522" visible="true" version="1" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6317043" lon="139.2839501" />
+  <node id="11658046525" visible="true" version="1" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6313749" lon="139.2859473" />
+  <node id="11658046527" visible="true" version="1" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6316353" lon="139.2858200" />
+  <node id="11658046528" visible="true" version="1" changeset="147832591" timestamp="2024-02-23T20:00:36Z" user="postown" uid="4480756" lat="35.6319221" lon="139.2838936" />
+  <node id="11990077793" visible="true" version="1" changeset="152847631" timestamp="2024-06-18T12:56:03Z" user="seichan1028" uid="6427548" lat="35.6381821" lon="139.2712177" />
+  <node id="12173528461" visible="true" version="1" changeset="156542917" timestamp="2024-09-12T19:09:28Z" user="postown" uid="4480756" lat="35.6425358" lon="139.2800567">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12173528462" visible="true" version="1" changeset="156542917" timestamp="2024-09-12T19:09:28Z" user="postown" uid="4480756" lat="35.6425725" lon="139.2802929">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12179144668" visible="true" version="1" changeset="156663443" timestamp="2024-09-15T20:41:37Z" user="postown" uid="4480756" lat="35.6436743" lon="139.2826429" />
+  <node id="12213531525" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6381635" lon="139.2712138">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="forward" />
+  </node>
+  <node id="12213531526" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6380138" lon="139.2711808">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="backward" />
+  </node>
+  <node id="12213531528" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6308958" lon="139.2696007">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12213531530" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6309976" lon="139.2696290">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12213531533" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6310797" lon="139.2696510">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="forward" />
+  </node>
+  <node id="12213531534" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6308485" lon="139.2695889">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="backward" />
+  </node>
+  <node id="12213531536" visible="true" version="2" changeset="180578448" timestamp="2026-03-29T11:31:47Z" user="postown" uid="4480756" lat="35.6293210" lon="139.2692060" />
+  <node id="12213531599" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6423045" lon="139.2783749">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12213531600" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6423149" lon="139.2784576">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="forward" />
+  </node>
+  <node id="12213535601" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6422901" lon="139.2782649">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="backward" />
+  </node>
+  <node id="12213535604" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6420172" lon="139.2764563">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12213535605" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6420333" lon="139.2765538">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="forward" />
+  </node>
+  <node id="12213535606" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6419976" lon="139.2763393">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals:direction" v="backward" />
+  </node>
+  <node id="12213535612" visible="true" version="1" changeset="157324508" timestamp="2024-10-01T07:14:06Z" user="98860" uid="13233640" lat="35.6380682" lon="139.2711934">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12452773455" visible="true" version="1" changeset="160629111" timestamp="2024-12-26T09:35:15Z" user="CS跡地" uid="21991772" lat="35.6313454" lon="139.2860774">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12452773456" visible="true" version="1" changeset="160629111" timestamp="2024-12-26T09:35:15Z" user="CS跡地" uid="21991772" lat="35.6315446" lon="139.2862484">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="13686954969" visible="true" version="1" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6326096" lon="139.2709288" />
+  <node id="13686954970" visible="true" version="1" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6329623" lon="139.2710705" />
+  <node id="13686954971" visible="true" version="1" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6324003" lon="139.2707447" />
+  <node id="13686954975" visible="true" version="1" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756" lat="35.6328165" lon="139.2710333" />
+  <way id="26498682" visible="true" version="22" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="290429236" />
+    <nd ref="6717728053" />
+    <nd ref="6717728048" />
+    <nd ref="290429265" />
+    <nd ref="9817430258" />
+    <nd ref="6717728054" />
+    <nd ref="12173528462" />
+    <nd ref="344157146" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="40" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="26921229" visible="true" version="15" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="1456996948" />
+    <nd ref="9817430298" />
+    <nd ref="290429446" />
+    <nd ref="2929660385" />
+    <nd ref="290429487" />
+    <nd ref="10137516607" />
+    <nd ref="3771401886" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="26921235" visible="true" version="15" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756">
+    <nd ref="290429904" />
+    <nd ref="13686954975" />
+    <nd ref="2929660296" />
+    <nd ref="13686954969" />
+    <nd ref="290429912" />
+    <nd ref="13686954971" />
+    <nd ref="2249012471" />
+    <tag k="access" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="26921303" visible="true" version="21" changeset="178089534" timestamp="2026-02-04T11:07:14Z" user="近場行き" uid="12272282">
+    <nd ref="1457004092" />
+    <nd ref="6041099464" />
+    <nd ref="290429219" />
+    <nd ref="7137194481" />
+    <nd ref="2556523230" />
+    <nd ref="12179144668" />
+    <nd ref="2559462934" />
+    <nd ref="2421948169" />
+    <nd ref="6717728049" />
+    <nd ref="7037880545" />
+    <nd ref="290429236" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="50" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="70526825" visible="true" version="12" changeset="160629111" timestamp="2024-12-26T09:35:15Z" user="CS跡地" uid="21991772">
+    <nd ref="776922301" />
+    <nd ref="12452773455" />
+    <nd ref="841635533" />
+    <tag k="bicycle" v="no" />
+    <tag k="destination" v="大月;相模湖;C4圏央道" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk_link" />
+    <tag k="name" v="八王子南バイパス" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="oneway" v="yes" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="70527782" visible="true" version="11" changeset="160629111" timestamp="2024-12-26T09:35:15Z" user="CS跡地" uid="21991772">
+    <nd ref="841648865" />
+    <nd ref="12452773456" />
+    <nd ref="252402480" />
+    <tag k="bicycle" v="no" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk_link" />
+    <tag k="name" v="八王子南バイパス" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="oneway" v="yes" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="70527787" visible="true" version="9" changeset="83862980" timestamp="2020-04-21T07:48:22Z" user="Otenkiya" uid="4702051">
+    <nd ref="841648907" />
+    <nd ref="841648917" />
+    <nd ref="841648894" />
+    <nd ref="841648867" />
+    <nd ref="841648854" />
+    <nd ref="841648899" />
+    <nd ref="841648877" />
+    <nd ref="841648856" />
+    <nd ref="841648844" />
+    <nd ref="841648910" />
+    <nd ref="855104793" />
+    <nd ref="841648882" />
+    <nd ref="841648902" />
+    <nd ref="841648881" />
+    <nd ref="5776766093" />
+    <nd ref="841648859" />
+    <tag k="bicycle" v="no" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="layer" v="-1" />
+    <tag k="maxspeed" v="60" />
+    <tag k="name" v="八王子南バイパス" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="oneway" v="yes" />
+    <tag k="ref" v="20" />
+    <tag k="tunnel" v="yes" />
+    <tag k="tunnel:name" v="浅川トンネル" />
+  </way>
+  <way id="70527791" visible="true" version="12" changeset="156664653" timestamp="2024-09-15T21:31:53Z" user="postown" uid="4480756">
+    <nd ref="841635533" />
+    <nd ref="11658046525" />
+    <nd ref="4382968561" />
+    <nd ref="841635554" />
+    <nd ref="841635536" />
+    <nd ref="11658046522" />
+    <nd ref="841635517" />
+    <tag k="bicycle" v="no" />
+    <tag k="bridge" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk_link" />
+    <tag k="layer" v="1" />
+    <tag k="name" v="八王子南バイパス" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="oneway" v="yes" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="70527792" visible="true" version="10" changeset="88578038" timestamp="2020-07-27T17:19:49Z" user="postown" uid="4480756">
+    <nd ref="841648859" />
+    <nd ref="841648848" />
+    <tag k="bicycle" v="no" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="layer" v="1" />
+    <tag k="name" v="八王子南バイパス" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="oneway" v="yes" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="72280845" visible="true" version="9" changeset="83862980" timestamp="2020-04-21T07:48:22Z" user="Otenkiya" uid="4702051">
+    <nd ref="841635539" />
+    <nd ref="5776766094" />
+    <nd ref="855104806" />
+    <nd ref="841635520" />
+    <nd ref="841635548" />
+    <nd ref="841635523" />
+    <nd ref="855104783" />
+    <nd ref="841635556" />
+    <nd ref="841648903" />
+    <nd ref="841648863" />
+    <nd ref="841648884" />
+    <nd ref="841648912" />
+    <nd ref="858875931" />
+    <nd ref="4095092825" />
+    <nd ref="841648846" />
+    <nd ref="841648857" />
+    <nd ref="841648879" />
+    <nd ref="841648901" />
+    <nd ref="855104768" />
+    <tag k="bicycle" v="no" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="layer" v="-1" />
+    <tag k="maxspeed" v="60" />
+    <tag k="name" v="八王子南バイパス" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="oneway" v="yes" />
+    <tag k="ref" v="20" />
+    <tag k="tunnel" v="yes" />
+    <tag k="tunnel:name" v="浅川トンネル" />
+  </way>
+  <way id="143346778" visible="true" version="8" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="1568711685" />
+    <nd ref="1568711676" />
+    <tag k="access" v="yes" />
+    <tag k="bicycle" v="yes" />
+    <tag k="bridge" v="yes" />
+    <tag k="bridge:name" v="上椚田橋" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="1" />
+    <tag k="layer" v="1" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="source" v="YahooJapan/ALPSMAP" />
+  </way>
+  <way id="143346780" visible="true" version="10" changeset="152847631" timestamp="2024-06-18T12:56:03Z" user="seichan1028" uid="6427548">
+    <nd ref="1568711663" />
+    <nd ref="1568711661" />
+    <tag k="access" v="yes" />
+    <tag k="bicycle" v="yes" />
+    <tag k="bridge" v="yes" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="1" />
+    <tag k="layer" v="1" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="落合橋" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="source" v="YahooJapan/ALPSMAP" />
+  </way>
+  <way id="143346796" visible="true" version="14" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756">
+    <nd ref="1568711661" />
+    <nd ref="2258334113" />
+    <nd ref="2258334084" />
+    <nd ref="290429772" />
+    <nd ref="2262709247" />
+    <nd ref="290429783" />
+    <nd ref="290429793" />
+    <nd ref="290429807" />
+    <nd ref="10861840233" />
+    <nd ref="2249012465" />
+    <nd ref="290429861" />
+    <nd ref="290429873" />
+    <nd ref="290429880" />
+    <nd ref="290429891" />
+    <nd ref="13686954970" />
+    <nd ref="290429904" />
+    <tag k="access" v="yes" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="source" v="GPS" />
+  </way>
+  <way id="143346797" visible="true" version="12" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="1568711676" />
+    <nd ref="1780542944" />
+    <nd ref="1568711675" />
+    <nd ref="290429602" />
+    <nd ref="290429608" />
+    <nd ref="290429620" />
+    <nd ref="290429636" />
+    <nd ref="290429647" />
+    <nd ref="290429657" />
+    <tag k="access" v="yes" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="source" v="GPS" />
+  </way>
+  <way id="226273242" visible="true" version="13" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="2569095734" />
+    <nd ref="2929660321" />
+    <nd ref="9817430297" />
+    <nd ref="1456996948" />
+    <tag k="access" v="yes" />
+    <tag k="bicycle" v="yes" />
+    <tag k="bridge" v="yes" />
+    <tag k="bridge:name" v="両界橋" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="2" />
+    <tag k="layer" v="1" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="source" v="YahooJapan/ALPSMAP" />
+  </way>
+  <way id="373720000" visible="true" version="10" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="290429657" />
+    <nd ref="3645342862" />
+    <nd ref="11990077793" />
+    <nd ref="12213531525" />
+    <nd ref="1456989873" />
+    <nd ref="12213535612" />
+    <nd ref="12213531526" />
+    <nd ref="1456989698" />
+    <nd ref="290429695" />
+    <nd ref="290429705" />
+    <nd ref="2249012434" />
+    <nd ref="290429716" />
+    <nd ref="8818405804" />
+    <nd ref="2249012586" />
+    <nd ref="290429727" />
+    <nd ref="290429737" />
+    <nd ref="1568711663" />
+    <tag k="access" v="yes" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="source" v="GPS" />
+  </way>
+  <way id="620099442" visible="true" version="9" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="2309377330" />
+    <nd ref="6717727794" />
+    <nd ref="3554926865" />
+    <nd ref="6717727806" />
+    <nd ref="3554926861" />
+    <nd ref="3554926860" />
+    <nd ref="6717727797" />
+    <nd ref="290429201" />
+    <nd ref="1457010170" />
+    <nd ref="3554926840" />
+    <nd ref="6717727803" />
+    <nd ref="6717727805" />
+    <nd ref="1457009535" />
+    <nd ref="6717727804" />
+    <nd ref="4003654292" />
+    <nd ref="290429313" />
+    <nd ref="6717727801" />
+    <nd ref="290429205" />
+    <tag k="bicycle" v="yes" />
+    <tag k="destination:backward" v="新宿;立川;E20中央道" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="50" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="620099877" visible="true" version="14" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="344157146" />
+    <nd ref="12173528461" />
+    <nd ref="290429284" />
+    <nd ref="2249012473" />
+    <nd ref="9817430259" />
+    <nd ref="9817430260" />
+    <nd ref="12213531600" />
+    <nd ref="12213531599" />
+    <nd ref="2249012543" />
+    <nd ref="12213535601" />
+    <nd ref="9817430261" />
+    <nd ref="2249012463" />
+    <nd ref="1456998198" />
+    <nd ref="1456998134" />
+    <nd ref="12213535605" />
+    <nd ref="2569095732" />
+    <nd ref="12213535604" />
+    <nd ref="12213535606" />
+    <nd ref="8718613307" />
+    <nd ref="1456997761" />
+    <nd ref="2963663309" />
+    <nd ref="2929660290" />
+    <nd ref="8668936632" />
+    <nd ref="2929660375" />
+    <nd ref="2569095733" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="40" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="714663130" visible="true" version="8" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="393106300" />
+    <nd ref="6717728046" />
+    <nd ref="6717728045" />
+    <nd ref="9930032564" />
+    <nd ref="3554926872" />
+    <nd ref="2309377334" />
+    <nd ref="2309377330" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="50" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="714663131" visible="true" version="9" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="290429205" />
+    <nd ref="290429210" />
+    <nd ref="1457004092" />
+    <tag k="bicycle" v="yes" />
+    <tag k="destination:forward" v="大月;相模湖;C4圏央道" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="50" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="714663132" visible="true" version="7" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="3771401886" />
+    <nd ref="6717728056" />
+    <nd ref="6717728058" />
+    <nd ref="344157921" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="3" />
+    <tag k="lanes:backward" v="1" />
+    <tag k="lanes:forward" v="2" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+    <tag k="turn:lanes:forward" v="through|right" />
+  </way>
+  <way id="714663133" visible="true" version="8" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="344157921" />
+    <nd ref="6717728059" />
+    <nd ref="6717728055" />
+    <nd ref="3771401882" />
+    <nd ref="3771401885" />
+    <nd ref="9641116677" />
+    <nd ref="2249012621" />
+    <nd ref="1780542958" />
+    <nd ref="1568711685" />
+    <tag k="access" v="yes" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="830819984" visible="true" version="4" changeset="156664653" timestamp="2024-09-15T21:31:53Z" user="postown" uid="4480756">
+    <nd ref="841648848" />
+    <nd ref="11658046528" />
+    <nd ref="855104807" />
+    <nd ref="841648915" />
+    <nd ref="841648891" />
+    <nd ref="8400745604" />
+    <nd ref="11658046527" />
+    <nd ref="841648865" />
+    <tag k="bicycle" v="no" />
+    <tag k="bridge" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk_link" />
+    <tag k="layer" v="1" />
+    <tag k="name" v="八王子南バイパス" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="oneway" v="yes" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="830819985" visible="true" version="1" changeset="88578038" timestamp="2020-07-27T17:19:49Z" user="postown" uid="4480756">
+    <nd ref="841635517" />
+    <nd ref="841635539" />
+    <tag k="bicycle" v="no" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="layer" v="1" />
+    <tag k="name" v="八王子南バイパス" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="oneway" v="yes" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="1137600982" visible="true" version="2" changeset="161881677" timestamp="2025-01-29T04:28:09Z" user="市川ゆり子" uid="388809">
+    <nd ref="2569095733" />
+    <nd ref="9817430262" />
+    <nd ref="2929660407" />
+    <nd ref="2569095734" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+  </way>
+  <way id="1319810736" visible="true" version="3" changeset="180555164" timestamp="2026-03-28T18:57:37Z" user="postown" uid="4480756">
+    <nd ref="2249012471" />
+    <nd ref="9959031915" />
+    <nd ref="290429922" />
+    <nd ref="290429932" />
+    <nd ref="290429938" />
+    <nd ref="290429961" />
+    <nd ref="290429978" />
+    <nd ref="12213531533" />
+    <nd ref="3014371472" />
+    <nd ref="12213531530" />
+    <nd ref="290429984" />
+    <nd ref="12213531528" />
+    <nd ref="290429990" />
+    <nd ref="12213531534" />
+    <nd ref="290429994" />
+    <nd ref="9641116678" />
+    <nd ref="290429999" />
+    <nd ref="290430005" />
+    <nd ref="290430033" />
+    <nd ref="290430038" />
+    <nd ref="290430043" />
+    <nd ref="290430048" />
+    <nd ref="290430052" />
+    <nd ref="12213531536" />
+    <nd ref="290430057" />
+    <tag k="access" v="yes" />
+    <tag k="bicycle" v="yes" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="trunk" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="30" />
+    <tag k="name" v="甲州街道" />
+    <tag k="name:en" v="Koshu-kaido" />
+    <tag k="name:ja" v="甲州街道" />
+    <tag k="name:ja-Hira" v="こうしゅうかいどう" />
+    <tag k="name:ja-Latn" v="Kōshū Kaidō" />
+    <tag k="nat_name" v="国道20号" />
+    <tag k="nat_name:en" v="National Highway Route 20" />
+    <tag k="ref" v="20" />
+  </way>
+</osm>

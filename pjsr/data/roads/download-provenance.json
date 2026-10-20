@@ -1,0 +1,7 @@
+{
+  "downloaded_url": "https://api.openstreetmap.org/api/0.6/map?bbox=139.267,35.630,139.292,35.650",
+  "downloaded_at_utc": "2026-10-20",
+  "original_response_sha256": "8551937a703b13f65a441d402c99b1651d4ac070e8fe1a235edd488342a55f9e",
+  "subset": "motorway/motorway_link/trunk/trunk_link ways plus exact referenced nodes; coordinates and tags unchanged",
+  "subset_sha256": "342a4672cead40133a48617bc53839297569d46e379e0c9ae0d7ba804e9d3fe1"
+}

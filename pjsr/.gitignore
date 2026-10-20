@@ -1,0 +1,8 @@
+.gradle/
+build/
+run/
+libs/
+# Baseline binary resources are restored byte-for-byte from the pinned repository JAR.
+src/main/resources/assets/pjr/terrain/
+src/main/resources/assets/pjr/data/
+src/main/resources/assets/pjr/world/*.gz

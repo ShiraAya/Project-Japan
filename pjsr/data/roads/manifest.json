@@ -1,0 +1,444 @@
+{
+  "schema": 1,
+  "snapshot": "takao-r20-20261020-v1",
+  "download_date": "2026-10-20",
+  "source": "https://api.openstreetmap.org/api/0.6/map?bbox=139.267,35.630,139.292,35.650",
+  "license": "ODbL-1.0",
+  "attribution": "© OpenStreetMap contributors",
+  "raw_sha256": "342a4672cead40133a48617bc53839297569d46e379e0c9ae0d7ba804e9d3fe1",
+  "compiled_sha256": "8d5b6fa28ef1846398983e2377866022a27e9b99ced96f2a6fbffdf9750e8bfa",
+  "compiler_version": 1,
+  "coordinate": "PJR Geo 0.5, EPSG:4326 input",
+  "ways": [
+    {
+      "id": "714663133",
+      "nodes": [
+        "1568711685",
+        "1780542958",
+        "2249012621",
+        "9641116677",
+        "3771401885",
+        "3771401882",
+        "6717728055",
+        "6717728059",
+        "344157921"
+      ],
+      "tags": {
+        "access": "yes",
+        "bicycle": "yes",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20"
+      },
+      "forward": 1,
+      "reverse": 1,
+      "inferred": false
+    },
+    {
+      "id": "714663132",
+      "nodes": [
+        "344157921",
+        "6717728058",
+        "6717728056",
+        "3771401886"
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "maxspeed": "30",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20",
+        "turn:lanes:forward": "through|right"
+      },
+      "forward": 1,
+      "reverse": 2,
+      "inferred": false
+    },
+    {
+      "id": "26921229",
+      "nodes": [
+        "3771401886",
+        "10137516607",
+        "290429487",
+        "2929660385",
+        "290429446",
+        "9817430298",
+        "1456996948"
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20"
+      },
+      "forward": 1,
+      "reverse": 1,
+      "inferred": false
+    },
+    {
+      "id": "226273242",
+      "nodes": [
+        "1456996948",
+        "9817430297",
+        "2929660321",
+        "2569095734"
+      ],
+      "tags": {
+        "access": "yes",
+        "bicycle": "yes",
+        "bridge": "yes",
+        "bridge:name": "両界橋",
+        "highway": "trunk",
+        "lanes": "2",
+        "layer": "1",
+        "maxspeed": "30",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20",
+        "source": "YahooJapan/ALPSMAP"
+      },
+      "forward": 1,
+      "reverse": 1,
+      "inferred": false
+    },
+    {
+      "id": "1137600982",
+      "nodes": [
+        "2569095734",
+        "2929660407",
+        "9817430262",
+        "2569095733"
+      ],
+      "tags": {
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20"
+      },
+      "forward": 1,
+      "reverse": 1,
+      "inferred": false
+    },
+    {
+      "id": "620099877",
+      "nodes": [
+        "2569095733",
+        "2929660375",
+        "8668936632",
+        "2929660290",
+        "2963663309",
+        "1456997761",
+        "8718613307",
+        "12213535606",
+        "12213535604",
+        "2569095732",
+        "12213535605",
+        "1456998134",
+        "1456998198",
+        "2249012463",
+        "9817430261",
+        "12213535601",
+        "2249012543",
+        "12213531599",
+        "12213531600",
+        "9817430260",
+        "9817430259",
+        "2249012473",
+        "290429284",
+        "12173528461",
+        "344157146"
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "40",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20"
+      },
+      "forward": 1,
+      "reverse": 1,
+      "inferred": false
+    },
+    {
+      "id": "26498682",
+      "nodes": [
+        "344157146",
+        "12173528462",
+        "6717728054",
+        "9817430258",
+        "290429265",
+        "6717728048",
+        "6717728053",
+        "290429236"
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "40",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20",
+        "surface": "asphalt"
+      },
+      "forward": 1,
+      "reverse": 1,
+      "inferred": false
+    },
+    {
+      "id": "26921303",
+      "nodes": [
+        "290429236",
+        "7037880545",
+        "6717728049",
+        "2421948169",
+        "2559462934",
+        "12179144668",
+        "2556523230",
+        "7137194481",
+        "290429219",
+        "6041099464",
+        "1457004092"
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "50",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20",
+        "surface": "asphalt"
+      },
+      "forward": 2,
+      "reverse": 2,
+      "inferred": false
+    },
+    {
+      "id": "714663131",
+      "nodes": [
+        "1457004092",
+        "290429210",
+        "290429205"
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "destination:forward": "大月;相模湖;C4圏央道",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "50",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20",
+        "surface": "asphalt"
+      },
+      "forward": 2,
+      "reverse": 2,
+      "inferred": false
+    },
+    {
+      "id": "620099442",
+      "nodes": [
+        "290429205",
+        "6717727801",
+        "290429313",
+        "4003654292",
+        "6717727804",
+        "1457009535",
+        "6717727805",
+        "6717727803",
+        "3554926840",
+        "1457010170",
+        "290429201",
+        "6717727797",
+        "3554926860",
+        "3554926861",
+        "6717727806",
+        "3554926865",
+        "6717727794",
+        "2309377330"
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "destination:backward": "新宿;立川;E20中央道",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "50",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20",
+        "surface": "asphalt"
+      },
+      "forward": 2,
+      "reverse": 2,
+      "inferred": false
+    },
+    {
+      "id": "714663130",
+      "nodes": [
+        "2309377330",
+        "2309377334",
+        "3554926872",
+        "9930032564",
+        "6717728045",
+        "6717728046",
+        "393106300"
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "foot": "no",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "50",
+        "name": "甲州街道",
+        "name:en": "Koshu-kaido",
+        "name:ja": "甲州街道",
+        "name:ja-Hira": "こうしゅうかいどう",
+        "name:ja-Latn": "Kōshū Kaidō",
+        "nat_name": "国道20号",
+        "nat_name:en": "National Highway Route 20",
+        "ref": "20",
+        "surface": "asphalt"
+      },
+      "forward": 2,
+      "reverse": 2,
+      "inferred": false
+    }
+  ],
+  "excluded": [
+    {
+      "way": "26921235",
+      "reason": "outside northern pilot boundary"
+    },
+    {
+      "way": "70526825",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "70527782",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "70527787",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "70527791",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "70527792",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "72280845",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "143346778",
+      "reason": "outside northern pilot boundary"
+    },
+    {
+      "way": "143346780",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "143346796",
+      "reason": "outside northern pilot boundary"
+    },
+    {
+      "way": "143346797",
+      "reason": "outside northern pilot boundary"
+    },
+    {
+      "way": "373720000",
+      "reason": "outside northern pilot boundary"
+    },
+    {
+      "way": "830819984",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "830819985",
+      "reason": "outside old R20 pilot corridor"
+    },
+    {
+      "way": "1319810736",
+      "reason": "outside northern pilot boundary"
+    }
+  ],
+  "note": "Regional corridor pilot only. No national coverage claim. Node IDs define connectivity; layer is not elevation."
+}
